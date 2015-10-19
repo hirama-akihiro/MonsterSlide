@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &143924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 494864}
+  - 114: {fileID: 11465444}
+  m_Layer: 0
+  m_Name: PartySettingManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &494864
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11465444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5f8ed96678fc64a9da110103de4852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allPuzzleMontamas:
+  - {fileID: 199446, guid: 4f9e0380f798a26479ce43da8c871cc0, type: 2}
+  - {fileID: 193070, guid: 4f119d1cb3ebe1b47b0fafd10fb482d0, type: 2}
+  - {fileID: 101916, guid: a47c33b9136909a4a844e9880d5b72bd, type: 2}
+  - {fileID: 154400, guid: 8177a2e3c4169704cbaa454c2e711440, type: 2}
+  - {fileID: 101916, guid: f5e44c3679dba90409820691fa8921e3, type: 2}
+  - {fileID: 101916, guid: 39da9cfaae59aa040ad27ce8cd485a8a, type: 2}
+  allSkillMontamas:
+  - {fileID: 193852, guid: 7ab0e4e96d788424e9606eb9116ad8e2, type: 2}
+  - {fileID: 163734, guid: f9a1e603ad0da2f49a6c0c28ea405cec, type: 2}
+  - {fileID: 163734, guid: eedeb87c689333844991e11662173507, type: 2}
+  - {fileID: 191962, guid: 28aeef1089be6a445bde8de9022ada55, type: 2}
+  - {fileID: 191962, guid: 437b644a0d339934d975cd02fd2361d8, type: 2}
+  - {fileID: 191962, guid: e02541251b1c12d4dbf9ee23497d926b, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 143924}
+  m_IsPrefabParent: 1

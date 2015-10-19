@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+  - enabled: 1
+    path: Assets/Scenes/GameModeSelect.unity
+  - enabled: 1
+    path: Assets/Scenes/BattleModeSelect.unity
+  - enabled: 1
+    path: Assets/Scenes/PartySelect.unity
+  - enabled: 1
+    path: Assets/Scenes/ServerClientSelect.unity
+  - enabled: 1
+    path: Assets/Scenes/Matching.unity
+  - enabled: 1
+    path: Assets/Scenes/VS.unity
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+  - enabled: 1
+    path: Assets/Scenes/Result.unity

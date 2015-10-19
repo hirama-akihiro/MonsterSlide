@@ -1,0 +1,363 @@
+fileFormatVersion: 2
+guid: 68ab5ac796af5f74bbe58021b390dc8c
+timeCreated: 1442986913
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "skil\u3000hebi_0"
+    21300002: "skil\u3000hebi_1"
+    21300004: "skil\u3000hebi_2"
+    21300006: "skil\u3000hebi_3"
+    21300008: "skil\u3000hebi_4"
+    21300010: "skil\u3000hebi_5"
+    21300012: "skil\u3000hebi_6"
+    21300014: "skil\u3000hebi_7"
+    21300016: "skil\u3000hebi_8"
+    21300018: "skil\u3000hebi_9"
+    21300020: "skil\u3000hebi_10"
+    21300022: "skil\u3000hebi_11"
+    21300024: "skil\u3000hebi_12"
+    21300026: "skil\u3000hebi_13"
+    21300028: "skil\u3000hebi_14"
+    21300030: "skil\u3000hebi_15"
+    21300032: "skil\u3000hebi_16"
+    21300034: "skil\u3000hebi_17"
+    21300036: "skil\u3000hebi_18"
+    21300038: "skil\u3000hebi_19"
+    21300040: "skil\u3000hebi_20"
+    21300042: "skil\u3000hebi_21"
+    21300044: "skil\u3000hebi_22"
+    21300046: "skil\u3000hebi_23"
+    21300048: "skil\u3000hebi_24"
+    21300050: "skil\u3000hebi_25"
+    21300052: "skil\u3000hebi_26"
+    21300054: "skil\u3000hebi_27"
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 250
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: "skil\u3000hebi_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3731
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_1"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 3731
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_2"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3444
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_3"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 3444
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_4"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3157
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_5"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 3157
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_6"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2870
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_7"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 2870
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_8"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2583
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_9"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 2583
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_10"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2296
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_11"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 2296
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_12"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2009
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_13"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 2009
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_14"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1722
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_15"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 1722
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_16"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1435
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_17"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 1435
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_18"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1148
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_19"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 1148
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_20"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 861
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_21"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 861
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_22"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 574
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_23"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 574
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_24"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 287
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_25"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 287
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_26"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: "skil\u3000hebi_27"
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 0
+        width: 1750
+        height: 287
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

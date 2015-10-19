@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Wall
+  - Lane
+  - Montama
+  - BlueTooth
+  - HP
+  - CutIn
+  - SkillMontama
+  - SkillBiteKizu
+  - SkillMaguma
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - BackSprite
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Layout
+    uniqueID: 1837955139
+    locked: 0
+  - name: Back
+    uniqueID: 3939773081
+    locked: 0
+  - name: DrawLaneBlock
+    uniqueID: 148725367
+    locked: 0
+  - name: BackSptire
+    uniqueID: 1736303675
+    locked: 0
+  - name: HaisyutuBack
+    uniqueID: 2372250153
+    locked: 0
+  - name: Shade
+    uniqueID: 2340723571
+    locked: 0
+  - name: Menu
+    uniqueID: 2107290175
+    locked: 0
+  - name: PuzzleMontama
+    uniqueID: 2469086219
+    locked: 0
+  - name: HaisyutuFront
+    uniqueID: 3143077113
+    locked: 0
+  - name: Darken
+    uniqueID: 1318432373
+    locked: 0
+  - name: PlayerLabel
+    uniqueID: 1009802007
+    locked: 0
+  - name: SkillGuage
+    uniqueID: 663160709
+    locked: 0
+  - name: PLayerICon
+    uniqueID: 50778795
+    locked: 0
+  - name: Waku
+    uniqueID: 581197145
+    locked: 0
+  - name: SkillMontama
+    uniqueID: 261092931
+    locked: 0
+  - name: MWaku
+    uniqueID: 1395431087
+    locked: 0
+  - name: MIcon
+    uniqueID: 946111861
+    locked: 0
+  - name: DeadLine
+    uniqueID: 1367564673
+    locked: 0
+  - name: Mana
+    uniqueID: 2358178459
+    locked: 0
+  - name: UI
+    uniqueID: 3720265945
+    locked: 0
+  - name: MenuImage
+    uniqueID: 160342765
+    locked: 0
+  - name: SkillKizu
+    uniqueID: 3581030155
+    locked: 0
+  - name: Particle
+    uniqueID: 2982393565
+    locked: 0
+  - name: GuideLine
+    uniqueID: 3685727511
+    locked: 0
+  - name: CutIn
+    uniqueID: 3858516835
+    locked: 0
+  - name: Dialog
+    uniqueID: 3962827787
+    locked: 0

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &199758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 485646}
+  - 114: {fileID: 11423552}
+  m_Layer: 0
+  m_Name: MDeleteBottomLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485646
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4, y: -9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11423552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a2d53e0ab9d8a14fad2592c37c25786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTime: 1
+  SpCarrier: {fileID: 103826, guid: 00bae6ee56cf65a48be9c816a7f67269, type: 2}
+  fireEffect: {fileID: 114722, guid: f84af63c3f8aa8d428005b75ab24587c, type: 2}
+  firePrefab: {fileID: 140960, guid: db37be2cabfc54a4ea3f5c760f06396c, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: SpCarrier
+      value: 
+      objectReference: {fileID: 169334, guid: ff535bb4769c01844a0a612aefa0347a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: skillTime
+      value: 1.08000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: firePrefab
+      value: 
+      objectReference: {fileID: 140960, guid: db37be2cabfc54a4ea3f5c760f06396c, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: fireEffect
+      value: 
+      objectReference: {fileID: 114722, guid: f84af63c3f8aa8d428005b75ab24587c, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 199758}
+  m_IsPrefabParent: 1

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &160288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 469432}
+  - 114: {fileID: 11470586}
+  m_Layer: 0
+  m_Name: MMonkuriBite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &469432
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.56601357, y: -3.75882435, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11470586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689697617172cb14e86529d67748de80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTime: 10
+  skillBite: {fileID: 126540, guid: 28863940de5a54d43b05e262b75f576f, type: 2}
+  skillKizu: {fileID: 150212, guid: a26d86b8787c16c4181d761236dff992, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: skillBite
+      value: 
+      objectReference: {fileID: 126540, guid: 28863940de5a54d43b05e262b75f576f, type: 2}
+    - target: {fileID: 0}
+      propertyPath: skillKizu
+      value: 
+      objectReference: {fileID: 150212, guid: a26d86b8787c16c4181d761236dff992, type: 2}
+    - target: {fileID: 0}
+      propertyPath: skillTime
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 160288}
+  m_IsPrefabParent: 1

@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &170960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432832}
+  - 114: {fileID: 11436286}
+  m_Layer: 0
+  m_Name: SkillMontamaManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432832
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.97348022, y: 2.68774223, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11436286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c893aa64f79f0414088f2166de472a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMontamas:
+  - {fileID: 163734, guid: f9a1e603ad0da2f49a6c0c28ea405cec, type: 2}
+  - {fileID: 191962, guid: 437b644a0d339934d975cd02fd2361d8, type: 2}
+  - {fileID: 163734, guid: eedeb87c689333844991e11662173507, type: 2}
+  - {fileID: 191962, guid: 28aeef1089be6a445bde8de9022ada55, type: 2}
+  SkillGauge:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  skillGaugeWaku:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxSkillPtMat: {fileID: 2100000, guid: 76b74454b6aa91848a0fce7c9c65e6b2, type: 2}
+  maxSkillPtEffect: {fileID: 141360, guid: 85d44dfe2c5dd8540b165388d235e589, type: 2}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 170960}
+  m_IsPrefabParent: 1
