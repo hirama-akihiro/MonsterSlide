@@ -1133,7 +1133,7 @@ GameObject:
   - 4: {fileID: 1205074527}
   - 212: {fileID: 1205074526}
   m_Layer: 0
-  m_Name: scselect
+  m_Name: SceneIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1647,7 +1647,7 @@ GameObject:
   - 4: {fileID: 1652545261}
   - 212: {fileID: 1652545260}
   m_Layer: 0
-  m_Name: headder
+  m_Name: Headder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
