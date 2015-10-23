@@ -1,19 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PartyInfoManager : MonoBehaviour {
 
-	private SpriteRenderer myRenderer;
-
+	#region Info Sprites
 	public Sprite masterInfoSprite;
 	public Sprite kimeraInfoSprite;
 	public Sprite ketsiInfoSprite;
 	public Sprite suzakuInfoSprite;
 	public Sprite genbuInfoSprite;
+	#endregion
 
 	// Use this for initialization
 	void Start () {
-		myRenderer = GetComponent<SpriteRenderer>();
+
 	}
 	
 	// Update is called once per frame
@@ -24,30 +25,30 @@ public class PartyInfoManager : MonoBehaviour {
 	public void OnClickKimera()
 	{
 		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		myRenderer.sprite = kimeraInfoSprite;
+		GetComponent<Image>().sprite = kimeraInfoSprite;
 	}
 
 	public void OnClickKetsi()
 	{
 		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		myRenderer.sprite = ketsiInfoSprite;
+		GetComponent<Image>().sprite = ketsiInfoSprite;
 	}
 
 	public void OnClickSuzaku()
 	{
 		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		myRenderer.sprite = suzakuInfoSprite;
+		GetComponent<Image>().sprite = suzakuInfoSprite;
 	}
 
 	public void OnClickGenbu()
 	{
 		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		myRenderer.sprite = genbuInfoSprite;
+		GetComponent<Image>().sprite = genbuInfoSprite;
 	}
 
 	public void OnClickMaster()
 	{
 		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		myRenderer.sprite = masterInfoSprite;
+		GetComponent<Image>().sprite = masterInfoSprite;
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TitleIndicator : MonoBehaviour
+public class TitleManager : MonoBehaviour
 {
 	/// <summary>
 	/// 最初のスプラッシュスクリーン後の最初のUpdateか
