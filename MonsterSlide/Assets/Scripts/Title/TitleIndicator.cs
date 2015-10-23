@@ -1,33 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TitleIndicator : MonoBehaviour {
-
+public class TitleIndicator : MonoBehaviour
+{
 	/// <summary>
-	/// GUISkin
+	/// 最初のスプラッシュスクリーン後の最初のUpdateか
 	/// </summary>
-	public GUISkin guiSkin;
+	private bool isInitialUpdate = true;
 
 	// Use this for initialization
-	void Start () {
-		AudioManager.Instance.StopAudio();
-		AudioManager.Instance.PlayAudio("game_maoudamashii_4_field11");
-		AudioManager.Instance.GetAudioClip("game_maoudamashii_4_field11").loop = true;
+	void Start()
+	{
 	}
-	
+
 	// Update is called once per frame
 	//  Author kazuki ito
-	void Update () {
-		if (Input.GetKey (KeyCode.Escape)) {
-			// ゲーム終了
-			Application.Quit();
+	void Update()
+	{
+		if(isInitialUpdate && !Application.isShowingSplashScreen)
+		{
+			AudioManager.Instance.StopAudio();
+			AudioManager.Instance.PlayAudio("game_maoudamashii_4_field11");
+			AudioManager.Instance.GetAudioClip("game_maoudamashii_4_field11").loop = true;
+			isInitialUpdate = false;
 		}
-		if (CrossInput.Instance.IsDown ()) {
+		if (isInitialUpdate) { return; }
+		if (Input.GetKey(KeyCode.Escape)) { Application.Quit(); }
 
+		if (CrossInput.Instance.IsDown())
+		{
 			AudioManager.Instance.PlayAudio("se_titleButton");
 			// Menuシーンへ遷移
 			FadeManager.Instance.LoadLevel("Home", 0.5f);
 		}
-	
+
 	}
 }

@@ -21,7 +21,6 @@ public class MainIndicator : SingletonMonoBehavior<MainIndicator> {
 	// Use this for initialization
 	void Awake()
 	{
-		// ここで鳴らしていいのかな？
 		AudioManager.Instance.StopAudio();
 		AudioManager.Instance.PlayAudio("bgm_battle");
 		AudioManager.Instance.GetAudioClip("bgm_battle").volume = 0.5f;
