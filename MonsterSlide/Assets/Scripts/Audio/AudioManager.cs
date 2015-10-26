@@ -7,7 +7,8 @@ using System.Collections.Generic;
 /// <summary>
 /// Audio鳴らす基底クラス
 /// </summary>
-public class AudioManager : SingletonMonoBehavior<AudioManager>{
+public class AudioManager : SingletonMonoBehavior<AudioManager>
+{
 
 	/// <summary>
 	/// BGMリスト
@@ -25,38 +26,37 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>{
 	private Dictionary<string, AudioClip> audioDict = null;
 
 	/// <summary>
-	/// AudioSourceDictionary
+	/// 
 	/// </summary>
-	private Dictionary<string, AudioSource> sourceDict = null;
+	public enum PlayMode { Normal, Repeat }
 
-	public void Awake()
+	protected override void Awake()
 	{
-		DontDestroyOnLoad(this);
-
+		base.Awake();
 		if (this != Instance) { Destroy(this); return; }
 		DontDestroyOnLoad(this.gameObject);
 
 		if (FindObjectsOfType(typeof(AudioListener)).All(o => !((AudioListener)o).enabled)) { this.gameObject.AddComponent<AudioListener>(); }
 		audioSources = new List<AudioSource>();
 		audioDict = new Dictionary<string, AudioClip>();
-		sourceDict = new Dictionary<string, AudioSource>();
 		Action<Dictionary<string, AudioClip>, AudioClip> addClipdict = (dict, c) =>
 		{
 			if (!dict.ContainsKey(c.name)) { dict.Add(c.name, c); }
 		};
 		audioList.ForEach(audio => addClipdict(audioDict, audio));
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-	
+	void Update()
+	{
+
 	}
 
 	/// <summary>
 	/// Audio名に対応した音声を鳴らす
 	/// </summary>
 	/// <param name="audioName"></param>
-	public void PlayAudio(string audioName)
+	public void PlayAudio(string audioName, PlayMode playMode = PlayMode.Normal, float volume = 1.0f)
 	{
 		// 使われていないAudioSourceがあれば使うし，なければ追加して鳴らす
 		if (!audioDict.ContainsKey(audioName)) { return; }
@@ -68,18 +68,27 @@ public class AudioManager : SingletonMonoBehavior<AudioManager>{
 		}
 		source.clip = audioDict[audioName];
 		source.Play();
-		if (!sourceDict.ContainsKey(audioName)) { sourceDict.Add(audioName, source); }
+		source.volume = volume;
+		if (playMode == PlayMode.Repeat) { source.loop = true; }
+		else { source.loop = false; }
 	}
-
-	/// <summary>
-	/// Audio名に対応したaudioclipを取得する
-	/// </summary>
-	/// <param name="audioName"></param>
-	/// <returns></returns>
-	public AudioSource GetAudioClip(string audioName) { return sourceDict[audioName]; }
 
 	/// <summary>
 	/// Audioを止める
 	/// </summary>
 	public void StopAudio() { audioSources.ForEach(s => s.Stop()); }
+
+	/// <summary>
+	/// 特定のAudioを止める
+	/// </summary>
+	public void StopAudio(string audioName) { audioSources.FirstOrDefault(s => s.clip.name == audioName).Stop(); }
+
+	/// <summary>
+	/// Audio名に対応した音声が再生されているかどうか
+	/// </summary>
+	/// <param name="audioName"></param>
+	public bool IsPlaying(string audioName)
+	{
+		return audioSources.FirstOrDefault(source => source.clip.name == audioName) == null ? false : audioSources.First(source => source.clip.name == audioName).isPlaying;
+	}
 }

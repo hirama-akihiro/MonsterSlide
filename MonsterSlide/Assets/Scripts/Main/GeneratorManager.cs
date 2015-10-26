@@ -113,14 +113,14 @@ public class GeneratorManager : SingletonMonoBehavior<GeneratorManager> {
 	public float ElapsedTime { get { return Time.time - sceneStartTime; } }
 
 	/// <summary>
+	/// ゲーム開始時に呼ぶメソッド
+	/// </summary>
+	public void GameStart() { enabled = true; }
+
+	/// <summary>
 	/// ゲーム終了時に呼ぶメソッド
 	/// </summary>
 	public void GameEnd() { enabled = false; }
-
-
-	//  ↓  Author kazuki ito
-	public void GameStart(){ enabled = true; }
-	//  ↑ Author kabuki ito
 
 	/// <summary>
 	/// 生成までの残り時間

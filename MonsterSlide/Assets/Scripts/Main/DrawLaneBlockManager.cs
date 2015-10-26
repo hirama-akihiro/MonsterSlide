@@ -37,7 +37,8 @@ public class DrawLaneBlockManager : SingletonMonoBehavior<DrawLaneBlockManager> 
 	public GameObject tateSlideLine;
 
 	// Use this for initialization
-	void Awake () {
+	protected override void Awake () {
+		base.Awake();
 		noMoveColumns = new List<int>();
 		for(int i = 1; i <= LaneManager.LANEMAINHEIGHT ;i++)
 		{

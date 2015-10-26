@@ -24,7 +24,6 @@ public class SkillMontama : MonoBehaviour {
 	/// </summary>
 	public float nowSkillPt;
 
-	//  ↓  Author kazuki ito
 	public bool debug = false;
 
 	GameObject cutInManager;
@@ -39,17 +38,14 @@ public class SkillMontama : MonoBehaviour {
 	public float mag = 1;
 
 	AndroidBlueToothAdapter BtAdapter;
-	//  ↑ Author kabuki ito
 
 	/// <summary>
 	/// スキルスクリプト
 	/// </summary>
 	//public GameObject skillPrefab;
 
-	//  ↓  Author kazuki ito
 	private GameObject gauge;
 	private GameObject gaugeWaku;
-
 
 	public void SetGauge(GameObject _gauge)
 	{
@@ -60,20 +56,17 @@ public class SkillMontama : MonoBehaviour {
 	{
 		gaugeWaku = _gaugeWaku;
 	}
-	//  ↑ Author kabuki ito
 
 	// Use this for initialization
 	void Start () {
 		nowSkillPt = 0.0f;
 
-		//  ↓  Author kazuki ito
 #if UNITY_ANDROID && !UNITY_EDITOR
 		Bt = GameObject.FindGameObjectWithTag("BlueTooth");
 		BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
 #endif
 		cutInManager = GameObject.Find("CutInManager");
 		cutInManagerCls = cutInManager.GetComponent<CutInManager>();
-		//  ↑ Author kabuki ito
 	}
 	
 	// Update is called once per frame
@@ -115,7 +108,7 @@ public class SkillMontama : MonoBehaviour {
 	{
 		nowSkillPt += pt * mag;
 		Instantiate(SkillMontamaManager.Instance.maxSkillPtEffect, transform.position, transform.rotation);
-		//  ↓  Author kazuki ito
+
 		if (nowSkillPt >= maxSkillPt)
 		{
 			nowSkillPt = maxSkillPt;
@@ -123,8 +116,6 @@ public class SkillMontama : MonoBehaviour {
 		}
 		else { gaugeWaku.GetComponent<Image>().material = null; }
 		gauge.GetComponent<Image>().fillAmount = nowSkillPt / maxSkillPt;
-
-		//  ↑ Author kabuki ito
 	}
 
 	public void SkillPointMax()

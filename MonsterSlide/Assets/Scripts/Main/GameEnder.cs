@@ -3,9 +3,7 @@ using System.Collections;
 
 public class GameEnder : SingletonMonoBehavior<GameEnder> {
 
-	//  ↓  Author kazuki ito
 	private bool oldIsGameEnd;
-	//  ↑ Author kabuki ito
 
 	// Use this for initialization
 	void Start () {
@@ -13,20 +11,16 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 	
 	// Update is called once per frame
 	void Update () {
-		//  ↓  Author kazuki ito
 		if (oldIsGameEnd != IsGameEnd) {
 			if (!IsGameEnd) { 
 				GameStart ();
 				oldIsGameEnd = IsGameEnd;
-				Debug.Log("Game Start");
 				return;
 			} else {
 				GameEnd ();
 				oldIsGameEnd = IsGameEnd;
-				Debug.Log("Game End");
 			}
 		}
-		//  ↑ Author kabuki ito
 	}
 
 	/// <summary>
@@ -37,15 +31,12 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 		GeneratorManager.Instance.GameEnd();
 		SkillMontamaManager.Instance.GameEnd();
 		LaneManager.Instance.GameEnd();
-		//  ↓  Author kazuki ito
 		GameObject[] puzzleMontamas = GameObject.FindGameObjectsWithTag("Montama");
 		foreach (GameObject puzzleMontama in puzzleMontamas) {
 			puzzleMontama.GetComponent<PuzzleMontama>().GameEnd();
 		}
-		//  ↑ Author kabuki ito
 	}
 
-	//  ↓  Author kazuki ito
 	public void GameStart()
 	{
 		GeneratorManager.Instance.GameStart ();
@@ -56,8 +47,6 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 			puzzleMontama.GetComponent<PuzzleMontama>().GameStart();
 		}
 	}
-	//  ↑ Author kabuki ito
-
 
 	/// <summary>
 	/// ゲームが終了かどうか

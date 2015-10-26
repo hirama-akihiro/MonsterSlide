@@ -12,15 +12,15 @@ public class PuzzleMontamaManager : SingletonMonoBehavior<PuzzleMontamaManager>
 	private List<PuzzleMontama> puzzleMontamas;
 
 	// Use this for initialization
-	void Awake()
+	protected override void Awake()
 	{
+		base.Awake();
 		puzzleMontamas = new List<PuzzleMontama>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		//Debug.Log("ManagerSiuze:" + puzzleMontamas.Count);
 	}
 
 	/// <summary>

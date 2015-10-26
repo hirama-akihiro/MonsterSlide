@@ -62,7 +62,7 @@ public class LaneBlock : MonoBehaviour {
 		// 最上段に設置された時，ゲームクリア
 		if (Column == 0 && 1 <= Row && Row <= LaneManager.LANEMAINWIDTH)
 		{
-			MainIndicator.Instance.IsGameOver = true;
+			MainManager.Instance.IsGameOver = true;
 			GameEnder.Instance.IsGameEnd = true;
 		}
 

@@ -15,27 +15,7 @@ public class GameModeSelectManager : MonoBehaviour {
 
 	public void OnClickBattle()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("BattleModeSelect", 0.5f);
-	}
-
-	public void OnClickHome()
-	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		FadeManager.Instance.LoadLevel("Home", 0.5f);
-	}
-
-	public void OnClickGame()
-	{
-		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		FadeManager.Instance.LoadLevel("GameModeSelect", 0.5f);
-	}
-
-	public void OnClickPartySelect()
-	{
-		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
-		FadeManager.Instance.LoadLevel("PartySelect", 0.5f);
 	}
 }

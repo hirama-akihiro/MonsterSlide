@@ -18,7 +18,6 @@ public class RivalDataManager : MonoBehaviour {
 	void Start () {
 		int player = PlayerPrefs.GetInt("Rival", 0);
 		Instantiate (playerPrefabs [player]);
-	
 	}
 	
 	// Update is called once per frame

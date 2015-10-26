@@ -7,32 +7,45 @@ using UnityEngine.UI;
 /// Author Kazuki Ito
 /// </summary>
 
-public class MatchingIndicator : MonoBehaviour {
+public class MatchingManager : MonoBehaviour {
 
-	/// <summary>
-	/// GUISkin
-	/// </summary>
-	//public GUISkin guiSkin;
-	public GameObject message;
 	public InputField addressField;
 	public GameObject connectButton;
-	string address="";
-	GameObject Bt;
-	AndroidBlueToothAdapter BtAdapter;
-	bool isServer;
-	bool rivalOk;
-	bool playerOk;
+	private string address="";
+	private GameObject Bt;
+	private AndroidBlueToothAdapter BtAdapter;
+	private bool isServer;
+	private bool rivalOk;
+	private bool playerOk;
 
-	// UI差し替え後の追加変数
+
 	public GameObject spriteMessage;
-	public Sprite serverSprite;
-	public Sprite clientSprite;
+	public Sprite serverMessageSprite;
+	public Sprite clientMessageSprite;
 
+	/// <summary>
+	/// ラベル用オブジェクト
+	/// </summary>
 	public GameObject spriteLabel;
+	
+	/// <summary>
+	/// サーバラベルイメージ
+	/// </summary>
 	public Sprite serverLabel;
+
+	/// <summary>
+	/// クライアントラベルイメージ
+	/// </summary>
 	public Sprite clientLabel;
 
+	/// <summary>
+	/// サーバテキストフィールド
+	/// </summary>
 	public GameObject serverTextField;
+
+	/// <summary>
+	/// クライアントテキストフィールド
+	/// </summary>
 	public GameObject clientTextField;
 
 	// Use this for initialization
@@ -44,16 +57,12 @@ public class MatchingIndicator : MonoBehaviour {
 		BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
 #endif
 
-		isServer = ServerClientIndicator.getIsServer ();
-
-
-		Text messageText = message.GetComponent<Text> ();
+		isServer = ServerClientManager.IsServer ();
 
 		if (isServer) {
-			//messageText.text = "下のアドレスをクライアントに入力させて下さい";
-			spriteMessage.GetComponent<SpriteRenderer>().sprite = serverSprite;
-			spriteLabel.GetComponent<SpriteRenderer>().sprite = serverLabel;
-			clientTextField.GetComponent<SpriteRenderer>().enabled = false;
+			spriteMessage.GetComponent<Image>().sprite = serverMessageSprite;
+			spriteLabel.GetComponent<Image>().sprite = serverLabel;
+			clientTextField.GetComponent<Image>().enabled = false;
 			connectButton.SetActive(false);
 			RectTransform rect = addressField.GetComponent<RectTransform>();
 			rect.sizeDelta = new Vector2(1000f, 100f);
@@ -69,10 +78,9 @@ public class MatchingIndicator : MonoBehaviour {
 
 		}
 		else{
-			spriteMessage.GetComponent<SpriteRenderer>().sprite = clientSprite;
-			spriteLabel.GetComponent<SpriteRenderer>().sprite = clientLabel;
-			serverTextField.GetComponent<SpriteRenderer>().enabled = false;
-			//messageText.text = "下にサーバーのアドレスを入力して下さい";
+			spriteMessage.GetComponent<Image>().sprite = clientMessageSprite;
+			spriteLabel.GetComponent<Image>().sprite = clientLabel;
+			serverTextField.GetComponent<Image>().enabled = false;
 
 			PlayerPrefs.SetInt("PlayerID", 0);
 			PlayerPrefs.SetInt("Rival",0);
@@ -118,22 +126,19 @@ public class MatchingIndicator : MonoBehaviour {
 	{
 		playerOk = true;
 		if (BtAdapter != null) {
-			BtAdapter.SendIntergerData(0,Tag.CONNECTEDOK);
+			BtAdapter.SendIntergerData(0, Tag.CONNECTEDOK);
 		}
 	}
 
 	public void OnClickConnect()
 	{
 		address = addressField.text;
-		if(BtAdapter != null)
-		{
-			BtAdapter.Connect (address);
-		}
+		if (BtAdapter != null) { BtAdapter.Connect(address); }
 	}
 
 	public void OnClickReturn()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("ServerClientSelect", 0.5f);
 	}
 }

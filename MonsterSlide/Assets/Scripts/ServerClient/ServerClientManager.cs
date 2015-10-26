@@ -1,21 +1,27 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ServerClientIndicator : MonoBehaviour {
+public class ServerClientManager : MonoBehaviour {
 
 	/// <summary>
-	/// GUISkin
+	/// サーバかどうか
 	/// </summary>
-	public GUISkin guiSkin;
+	private static bool isServer;
 
-	//  ↓  Author kazuki ito
-	static bool isServer;
+	/// <summary>
+	/// BluetoothPrefab
+	/// </summary>
 	public GameObject BtPrefab;
-	GameObject Bt;
-	AndroidBlueToothAdapter BtAdapter;
-	//  ↑ Author kabuki ito
 
+	/// <summary>
+	/// Bluetooth
+	/// </summary>
+	private GameObject Bt;
 
+	/// <summary>
+	/// BlueToothAdapter
+	/// </summary>
+	private AndroidBlueToothAdapter BtAdapter;
 
 	// Use this for initialization
 	/// <summary>
@@ -26,30 +32,22 @@ public class ServerClientIndicator : MonoBehaviour {
 	{
 		if (GameObject.FindGameObjectWithTag ("BlueTooth") == null) {
 			Bt = Instantiate (BtPrefab);
-
 			BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
-
 			BtAdapter.Create ();
-
 			DontDestroyOnLoad (Bt);
 		} else {
 			BtAdapter = GameObject.FindGameObjectWithTag("BlueTooth").GetComponent<AndroidBlueToothAdapter> ();
 		}
 		BtAdapter.BlueToothEnable ();
-
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		if (Input.GetKey (KeyCode.Escape)) {
-
 			StartManager.SetManagerEnable(false);
-			// ゲーム終了
 			Application.LoadLevel("Menu");
-
 		}
-
 	}
 
 	/// <summary>
@@ -57,10 +55,7 @@ public class ServerClientIndicator : MonoBehaviour {
 	/// Author Kazuki Ito
 	/// </summary>
 	/// <returns><c>true</c>, if is server was gotten, <c>false</c> otherwise.</returns>
-	public static bool getIsServer()
-	{
-		return isServer;
-	}
+	public static bool IsServer() { return isServer; }
 
 	/// <summary>
 	/// Raises the click server event.
@@ -71,7 +66,7 @@ public class ServerClientIndicator : MonoBehaviour {
 		isServer = true;
 		PartySettingManager.Instance.SetServerParty();
 		BattleTypeManager.Instance.battleType = BattleTypeManager.BattleType.NearBattle_Server;
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Matching", 0.5f);
 	}
 
@@ -84,7 +79,7 @@ public class ServerClientIndicator : MonoBehaviour {
 		isServer = false;
 		PartySettingManager.Instance.SetClientParty();
 		BattleTypeManager.Instance.battleType = BattleTypeManager.BattleType.NearBattle_Client;
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Matching", 0.5f);
 	}
 
@@ -98,7 +93,7 @@ public class ServerClientIndicator : MonoBehaviour {
 		PartySettingManager.Instance.SetSingleParty();
 		// シーン遷移
 		BattleTypeManager.Instance.battleType = BattleTypeManager.BattleType.SingleBattle;
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("VS", 0.5f);
 	}
 
@@ -110,7 +105,7 @@ public class ServerClientIndicator : MonoBehaviour {
 	{
 		StartManager.SetManagerEnable(false);
 		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("BattleModeSelect", 0.5f);
 	}
 
@@ -122,14 +117,14 @@ public class ServerClientIndicator : MonoBehaviour {
 	{
 		StartManager.SetManagerEnable(false);
 		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Home", 0.5f);
 	}
 
 	public void OnClickGame()
 	{
 		StartManager.SetManagerEnable(false);
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("GameModeSelect", 0.5f);
 	}
 
@@ -141,7 +136,7 @@ public class ServerClientIndicator : MonoBehaviour {
 	{
 		StartManager.SetManagerEnable(false);
 		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.Instance.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("PartySelect", 0.5f);
 	}
 }

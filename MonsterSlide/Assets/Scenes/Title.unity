@@ -366,10 +366,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.size
-      value: 18
-      objectReference: {fileID: 0}
     - target: {fileID: 448210, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -402,30 +398,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.data[12]
-      value: 
-      objectReference: {fileID: 8300000, guid: e51d7d3157640704282301f8b32b9a24, type: 3}
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.data[13]
-      value: 
-      objectReference: {fileID: 8300000, guid: 6ee1eeed043e2e84c842a5e6c99916a3, type: 3}
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.data[14]
-      value: 
-      objectReference: {fileID: 8300000, guid: 43bf55c0cdcb1b44eb22b31744f026c6, type: 3}
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.data[15]
-      value: 
-      objectReference: {fileID: 8300000, guid: a5e564fef9d2f69498a52b8a04f459f7, type: 3}
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.data[16]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9b8b18c86c6ba17469c728924e5f4ffa, type: 3}
-    - target: {fileID: 11478200, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
-      propertyPath: audioList.Array.data[17]
-      value: 
-      objectReference: {fileID: 8300000, guid: 1718a5dd2d2f1c24faa1ecd39339cd4d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c418859a78d8d744e8c6bd1bc31b26e3, type: 2}
   m_IsPrefabParent: 0
@@ -518,7 +490,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

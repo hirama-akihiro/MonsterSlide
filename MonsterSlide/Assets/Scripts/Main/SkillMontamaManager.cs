@@ -46,11 +46,8 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 		//string montamaData = " ";
 		for (int i = 0; i < 4; i++)
 		{
-			string key = "SkillMontama" + i;
-			int serialID = PlayerPrefs.GetInt(key, i);
-			serialID = i;
-			montamaData[i] = serialID; //ary[i]; ;
-			skills[i] = Instantiate(PartyManager.Instance.GetSkillMonkuri(serialID));
+			montamaData[i] = i;
+			skills[i] = Instantiate(PartyManager.Instance.GetSkillMonkuri(i));
 			skills[i].transform.SetParent(skillParent.transform);
 			skills[i].transform.position = SkillGauge[i].transform.position;
 			skills[i].GetComponent<SkillMontama>().SetGauge(SkillGauge[i]);

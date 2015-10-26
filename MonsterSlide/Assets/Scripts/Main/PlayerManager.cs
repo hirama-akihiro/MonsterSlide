@@ -8,18 +8,15 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour {
 
-	public GameObject PlayerSkillGauge;
+	public GameObject playerSkillGauge;
 
-	public GameObject[] PlayerPrefabs;
+	public GameObject[] playerPrefabs;
 
 	// Use this for initialization
 	void Start () {
-
-		int playerID = PlayerPrefs.GetInt("PlayerID", 0);
-		GameObject Player = Instantiate (PlayerPrefabs [0]);
-		Player.transform.SetParent (gameObject.transform);
-		Player.GetComponent<PlayerSkillBar> ().SetGauge (PlayerSkillGauge);
-	
+		GameObject player = Instantiate (playerPrefabs [0]);
+		player.transform.SetParent (gameObject.transform);
+		player.GetComponent<PlayerSkillBar> ().SetGauge (playerSkillGauge);
 	}
 	
 	// Update is called once per frame

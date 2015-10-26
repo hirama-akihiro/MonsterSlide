@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// Android blue tooth adapter.
 /// Author Kazuki Ito
 /// </summary>
-
 public class AndroidBlueToothAdapter : MonoBehaviour {
 	
 	// datatype
@@ -19,7 +18,6 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 	const int DATATYPE = 0;
 	const int DATA = 1;
 	const int TAG = 2;
-
 
 	// ClickTag
 	const int CONNECT = 0;
@@ -46,8 +44,6 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 			retryRequest = false;
 		}
 	}
-
-
 
 	public void Create () {
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -203,7 +199,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 					return;
 				}
 				
-				matching.GetComponent<MatchingIndicator> ().rivalConnectedOK ();
+				matching.GetComponent<MatchingManager> ().rivalConnectedOK ();
 				break;
 			}
 		} else if (Application.loadedLevelName == "Result") {
@@ -239,41 +235,40 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 
 	}
 
-	void onCallReceiveFloatData(float floatData ,int tag)
+	void onCallReceiveFloatData(float floatData, int tag)
 	{
 		// Write the necessary processing
 		if (Application.loadedLevelName == "Main") {
 			switch (tag) {
-			case (int)Tag.HP:
-				GameObject hpGauge = GameObject.FindGameObjectWithTag ("HP");
-				if (hpGauge == null) {
-					return;
-				}		
-				hpGauge.GetComponent<HpGauge> ().UpdateHp (floatData);
-				GameObject player2Icon = GameObject.FindGameObjectWithTag ("Player2Icon");
-				if (player2Icon == null) { return; }
-				player2Icon.GetComponent<FaceChanger>().hp = floatData;
-				break;
+				case (int)Tag.HP:
+					GameObject hpGauge = GameObject.FindGameObjectWithTag("HP");
+					if (hpGauge == null) {
+						return;
+					}
+					hpGauge.GetComponent<HpGauge>().UpdateHp(floatData);
+					GameObject player2Icon = GameObject.FindGameObjectWithTag("Player2Icon");
+					if (player2Icon == null) { return; }
+					player2Icon.GetComponent<FaceChanger>().hp = floatData;
+					break;
 
-			case (int)Tag.End:
-				GameObject manager2 = GameObject.Find ("MainManager");
-				if (manager2 == null) {
-					return;
-				}
+				case (int)Tag.End:
+					GameObject manager2 = GameObject.Find("MainManager");
+					if (manager2 == null) {
+						return;
+					}
 
-				manager2.GetComponent<MainIndicator> ().GameOver ();
-				break;
-
+					manager2.GetComponent<MainManager>().GameOver();
+					break;
 			}
 		}
 	}
 
-	void onCallReceiveStringData(string stringData ,int tag)
+	void onCallReceiveStringData(string stringData, int tag)
 	{
 		// Write the necessary processing
 		if (Application.loadedLevelName == "Main") {
 			switch (tag) {
-	
+
 			}
 		}
 	}
@@ -290,7 +285,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 				return;
 			}
 
-			matching.GetComponent<MatchingIndicator>().OnClickConnected();
+			matching.GetComponent<MatchingManager>().OnClickConnected();
 			break;
 
 		case DISCONNECT:
