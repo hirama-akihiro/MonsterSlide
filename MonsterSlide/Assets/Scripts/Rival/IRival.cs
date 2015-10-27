@@ -4,11 +4,11 @@ using System.Collections;
 /// <summary>
 /// 対戦相手のインターフェース
 /// </summary>
-public interface IOpponent {
+public interface IRival {
 
 	/// <summary>
 	/// 対戦相手の現在のHP
 	/// </summary>
 	/// <returns></returns>
-	float GetNowHp();
+	float NowHp { get; }
 }

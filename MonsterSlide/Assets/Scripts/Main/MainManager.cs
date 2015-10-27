@@ -36,46 +36,43 @@ public class MainManager : SingletonMonoBehavior<MainManager> {
 
 	public void OnClickMenu()
 	{
-		if(BtAdapter != null)
-		{
-			BtAdapter.SendIntergerData (0, Tag.End);
-		}
-		IsGameOver = false;
+		if (BtAdapter != null) { BtAdapter.SendIntergerData(0, Tag.End); }
 		FadeManager.Instance.LoadLevel("Result", 0.5f);
 	}
 
 	// Update is called once per frame
-	void Update()
+    void Update()
 	{
-
-		if (IsGameOver) {
-			SkillMontamaManager.I.SkillButtomEnable(false);
-			GameEnder.I.IsGameEnd =true;
-			if(BtAdapter != null)
-			{
-				BtAdapter.SendFloatData(0f,Tag.End);
-				//BtAdapter.SendIntergerData(-1, Tag.End);
-			}
-			GameObject WinLose = Instantiate(WinLosePrefab);
-			WinLose.GetComponent<WinLose>().SetWinEnable(winner);
-			IsGameOver = false;
-		}
+		//if (IsGameOver)
+		//{
+		//	SkillMontamaManager.I.SkillButtomEnable(false);
+		//	GameEnder.I.IsGameEnd = true;
+		//	if (BtAdapter != null) { BtAdapter.SendFloatData(0f, Tag.End); }
+		//	GameObject WinLose = Instantiate(WinLosePrefab);
+		//	WinLose.GetComponent<WinLose>().SetWinEnable(winner);
+		//	IsGameOver = false;
+		//}
 	}
 
-	public void GameOver()
+	//public void GameOver()
+	//{
+	//	SkillMontamaManager.I.SkillButtomEnable(false);
+	//	GameEnder.I.GameEnd ();
+	//	winner = true;
+
+	//	// 勝利BGM
+	//	AudioManager.I.PlayAudio("bgm_win");
+	//	GameObject WinLose = Instantiate(WinLosePrefab);
+	//	WinLose.GetComponent<WinLose>().SetWinEnable(winner);
+	//}
+
+	public void GameOver(bool isWin)
 	{
 		SkillMontamaManager.I.SkillButtomEnable(false);
-		GameEnder.I.GameEnd ();
-		winner = true;
-
-		// 勝利BGM
-		AudioManager.I.PlayAudio("bgm_win");
+		GameEnder.I.GameEnd();
+		if (BtAdapter != null) { BtAdapter.SendFloatData(0f, Tag.End); }
 		GameObject WinLose = Instantiate(WinLosePrefab);
-		WinLose.GetComponent<WinLose>().SetWinEnable(winner);
+		WinLose.GetComponent<WinLose>().SetWinEnable(isWin);
+		if (isWin) { AudioManager.I.PlayAudio("bgm_win"); }
 	}
-
-	/// <summary>
-	/// ゲームがクリアされているかどうか
-	/// </summary>
-	public bool IsGameOver { get; set; }
 }

@@ -65,14 +65,14 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	public GameObject SpCarrier;
 
 	/// <summary>
-	/// 古いHP?
+	/// 前フレームのHP
 	/// </summary>
 	private float oldHP = 0.0f;
 
 	/// <summary>
-	/// レーンを移動可能か
+	/// 現フレームのHP
 	/// </summary>
-	private bool isLaneMovable;
+	private float nowHP = 0.0f;
 
 	/// <summary>
 	/// 最後にフリックされた時のフリック方向
@@ -113,7 +113,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			}
 		}
 
-		// モンクリを下3段にセットする
+		// モンクリを下段にセットする
 		InitialMonkuriSet();
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -127,6 +127,13 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	
 	// Update is called once per frame
 	void Update () {
+		// ゲーム終了の判定
+		if (nowHP > 1.0f)
+		{
+			MainManager.I.GameOver(false);
+			GameEnder.I.IsGameEnd = true;
+		}
+
 		// 入力された瞬間に呼ばれる
 		if (CrossInput.I.IsDown()) { EventInputIsDown(); }
 
@@ -169,7 +176,6 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 		GameObject obj = GetTouchPosLaneObject(beginTouchPos);
 		if (obj == null) { return; }
 		if (noMoveColumns.Contains(obj.GetComponent<LaneBlock>().Column)) { return; }
-		isLaneMovable = true;
 		moveRow = obj.GetComponent<LaneBlock>().Row;
 		moveColumn = obj.GetComponent<LaneBlock>().Column;
 		DrawLaneBlockManager.I.DrawTapLane();
@@ -605,17 +611,17 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	void UpdateHP()
 	{
 		int maxHeight = 10;
-		for (int i = 1; i < LANEFRAMEWIDTH - 1; i++) {
-			for(int j = 1; j < LANEFRAMEHEIGHT ; j++)
+		for (int i = 1; i < LANEFRAMEWIDTH - 1; i++)
+		{
+			for (int j = 0; j < LANEFRAMEHEIGHT; j++)
 			{
-				foreach(Transform n in laneMatrix[j,i].transform)
+				foreach (Transform n in laneMatrix[j, i].transform)
 				{
-					if(n.gameObject.CompareTag("Montama"))
+					if (n.gameObject.CompareTag("Montama"))
 					{
-						int height = laneMatrix[j,i].GetComponent<LaneBlock>().Column;
-						if(height < maxHeight + 1)
+						int height = laneMatrix[j, i].GetComponent<LaneBlock>().Column;
+						if (height < maxHeight + 1)
 						{
-							//Debug.Log ("hpChange");
 							maxHeight = height - 1;
 							break;
 						}
@@ -628,40 +634,55 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			}
 		}
 
-		float hp = (LANEMAINHEIGHT - maxHeight) / (float)LANEMAINHEIGHT;
-
-		if (oldHP != hp) {
-			oldHP = hp;
-			if(BtAdapter != null)
-			{
-				BtAdapter.SendFloatData(hp,Tag.HP);
-			}
+		nowHP = (LANEMAINHEIGHT - maxHeight) / (float)LANEMAINHEIGHT;
+		Debug.Log(NowHP);
+		if (oldHP != nowHP) {
+			oldHP = nowHP;
+			if (BtAdapter != null) { BtAdapter.SendFloatData(nowHP, Tag.HP); }
 		}
 		return;
 	}
 	//  ↑ Author kabuki ito
 
 	/// <summary>
-	/// ゲーム終了時に呼ばれるメソッド
+	/// クラス停止時に呼ばれるメソッド
 	/// </summary>
 	public void GameEnd() { enabled = false; }
 
-	//  ↓  Author kazuki ito
+	/// <summary>
+	/// このクラスを開始させるメソッド
+	/// </summary>
 	public void GameStart(){ enabled = true; }
-	//  ↑ Author kabuki ito
 
 	/// <summary>
 	/// レーン行列
 	/// </summary>
 	public GameObject[,] LaneMatrix { get { return laneMatrix; } }
 
+	/// <summary>
+	/// 移動不可能なレーン番号
+	/// </summary>
 	public List<int> NoMoveColumns { get { return noMoveColumns; } }
 
+	/// <summary>
+	/// 最大行数
+	/// </summary>
 	public int MoveRow { get { return moveRow; } }
 
+	/// <summary>
+	/// 最大列数
+	/// </summary>
 	public int MoveColumn { get { return moveColumn; } }
 
+	/// <summary>
+	/// 前フレームのHP
+	/// </summary>
 	public float OldHp { get { return oldHP; } }
+
+	/// <summary>
+	/// 現フレームのHP
+	/// </summary>
+	public float NowHP { get { return nowHP; } }
 
 	/// <summary>
 	/// 本当にゲームが終わっているか

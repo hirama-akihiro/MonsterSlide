@@ -44,10 +44,6 @@ public class GeneratorManager : SingletonMonoBehavior<GeneratorManager> {
 	/// </summary>
 	private float threshold;
 
-	public GUISkin skin;
-
-	public bool debug;
-
 	// Use this for initialization
 	void Start () {
 		geneTimeLeft = interval;
@@ -93,18 +89,6 @@ public class GeneratorManager : SingletonMonoBehavior<GeneratorManager> {
 		else if (ElapsedTime < 4 * mag) { threshold = 0.5f; return 0.7f; }
 		else if (ElapsedTime < 5 * mag) { threshold = 0.6f; return 0.6f; }
 		else { threshold = 0.7f; return 0.5f; }
-	}
-
-
-	void OnGUI()
-	{
-		if (!debug) {
-			return;
-		}
-		
-		GUI.skin = skin;
-		GUI.Label(new Rect(Screen.width * 0.5f, Screen.height * 0.2f, Screen.width * 0.1f, Screen.height * 0.1f), "生成間隔:" + interval * GetIntervalRatio() + "秒", "SceneName");
-		GUI.Label(new Rect(Screen.width * 0.5f, Screen.height * 0.6f, Screen.width * 0.1f, Screen.height * 0.1f), "経過時間:" + (int)ElapsedTime + "秒", "SceneName");
 	}
 
 	/// <summary>

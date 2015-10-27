@@ -31,6 +31,7 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 		GeneratorManager.I.GameEnd();
 		SkillMontamaManager.I.GameEnd();
 		LaneManager.I.GameEnd();
+		BRival.I.IsGameEnd = true;
 		GameObject[] puzzleMontamas = GameObject.FindGameObjectsWithTag("Montama");
 		foreach (GameObject puzzleMontama in puzzleMontamas) {
 			puzzleMontama.GetComponent<PuzzleMontama>().GameEnd();
@@ -42,6 +43,7 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 		GeneratorManager.I.GameStart ();
 		SkillMontamaManager.I.GameStart ();
 		LaneManager.I.GameStart ();
+		BRival.I.IsGameEnd = false;
 		GameObject[] puzzleMontamas = GameObject.FindGameObjectsWithTag("Montama");
 		foreach (GameObject puzzleMontama in puzzleMontamas) {
 			puzzleMontama.GetComponent<PuzzleMontama>().GameStart();
@@ -52,6 +54,4 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 	/// ゲームが終了かどうか
 	/// </summary>
 	public bool IsGameEnd { get; set; }
-
-
 }

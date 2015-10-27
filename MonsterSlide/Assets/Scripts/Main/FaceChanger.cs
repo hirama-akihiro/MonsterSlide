@@ -8,7 +8,6 @@ public class FaceChanger : MonoBehaviour {
 	public Sprite p1_woman02;
 	public Sprite p1_woman03;
 	public bool isPlayer1;
-	public float hp;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +16,9 @@ public class FaceChanger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float hp;
 		if (isPlayer1) { hp = LaneManager.I.OldHp; }
+		else { hp = GetComponent<BRival>().NowHp; }
 
 		if(hp < 0.6)
 		{

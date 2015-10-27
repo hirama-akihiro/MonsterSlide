@@ -4,7 +4,7 @@ using System.Collections;
 /// <summary>
 /// シングルモードで戦うAI対戦相手のクラス
 /// </summary>
-public class AIOpponent : BOpponent {
+public class AIRival : BRival {
 
 	/// <summary>
 	/// ゲーム開始時のHPが増加する確率閾値(0 ~ 1)
@@ -43,17 +43,20 @@ public class AIOpponent : BOpponent {
 	public float skillTriggerThreshold;
 
 	// Use this for initialization
-	void Start () {
-		nowHp = 0.0f;
+	protected override void Start()
+	{
 		nowHpUpThreshold = beginHpUpThreshold;
 		nowHpDownThreshold = beginHpDownThreshold;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	protected override void Update()
+	{
+		base.Update();
 		// HP増減チェック
-		if (IsHpUp()) { nowHp += hpVariation; }
-		else if (IsHpDown()) { nowHp -= hpVariation; }
+		float check = Random.Range(0.0f, 1.0f);
+		if (IsHpUp(check)) { nowHP += hpVariation; }
+		else if (IsHpDown(check)) { nowHP -= hpVariation; }
 
 		// スキル発動チェック
 	}
@@ -61,9 +64,8 @@ public class AIOpponent : BOpponent {
 	/// <summary>
 	/// HPが増加するか
 	/// </summary>
-	private bool IsHpUp()
+	private bool IsHpUp(float check)
 	{
-		float check = Random.Range(0.0f, 1.0f);
 		return check > nowHpUpThreshold;
 	}
 
@@ -71,9 +73,8 @@ public class AIOpponent : BOpponent {
 	/// HPが減少するか
 	/// /// </summary>
 	/// <returns></returns>
-	private bool IsHpDown()
+	private bool IsHpDown(float check)
 	{
-		float check = Random.Range(0.0f, 1.0f);
 		return check < nowHpDownThreshold;
 	}
 }

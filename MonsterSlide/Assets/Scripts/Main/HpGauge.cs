@@ -6,27 +6,30 @@ using UnityEngine.UI;
 /// Hp gauge.
 /// Author Kazuki Ito
 /// </summary>
-public class HpGauge : MonoBehaviour {
-
-	float hp =0.0f;
+public class HpGauge : MonoBehaviour
+{
+	float hp = 0.0f;
 	Image imag;
 
 	// Use this for initialization
-	void Start () {
-		imag = gameObject.GetComponent<Image> ();
+	void Start()
+	{
+		imag = gameObject.GetComponent<Image>();
 		imag.fillAmount = hp;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-	
+	void Update()
+	{
+
 	}
 
 	public void UpdateHp(float _hp)
 	{
 		hp = _hp;
-		if (imag == null){
-			Debug.Log("imagnull");
+		if (imag == null)
+		{
+			Debug.Log("HPImage is null");
 			return;
 		}
 		imag.fillAmount = hp;

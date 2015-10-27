@@ -83,36 +83,6 @@ public class ResultIndicator : MonoBehaviour {
 		}
 	}
 
-//	void OnGUI()
-//	{
-//		int sw = Screen.width;
-//		int sh = Screen.height;
-//		GUI.skin = guiSkin;
-
-		// シーン名
-//		GUI.Label (new Rect (0, 0, sw, sh), "リザルト画面", "SceneName");
-
-//		if (!noRetry) {
-//			// シーン遷移ボタン
-//			if (GUI.Button (new Rect (sw * 0.25f, sh * 0.6f, sw * 0.5f, sh / 12), "もう一度対戦")) {
-//
-//
-//				//  ↑ Author kabuki ito
-//
-//
-//				// シーン遷移
-//				//Application.LoadLevel ("Main");
-//			}
-//		}
-//		if (GUI.Button (new Rect (sw * 0.25f, sh * 0.75f, sw * 0.5f, sh / 12), "Menu画面へ")) {
-//			// ゲーム終了
-//			//  ↓  Author kazuki ito
-//			ReturnToMain ();
-//			//  ↑ Author kabuki ito
-//
-//		}
-//	}
-
 	public void receiveRetryRequest()
 	{
 		RetryDialog.SetActive (true);

@@ -23,7 +23,6 @@ public class FadeManager : MonoBehaviour
 					Debug.LogError (typeof(FadeManager) + "is nothing");
 				}
 			}
-			
 			return instance;
 		}
 	}

@@ -178,15 +178,6 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 				manager.GetComponent<CutInManager>().CreateCutIn(intData, true, false);
 				break;
 
-//			case (int)Tag.End:
-//				GameObject manager2 = GameObject.Find ("MainManager");
-//				if (manager2 == null) {
-//					return;
-//				}
-//
-//				manager2.GetComponent<MainIndicator> ().GameOver ();
-//				break;
-
 			case (int)Tag.RetryRequest:
 				retryRequest = true;
 				break;
@@ -248,7 +239,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 					hpGauge.GetComponent<HpGauge>().UpdateHp(floatData);
 					GameObject player2Icon = GameObject.FindGameObjectWithTag("Player2Icon");
 					if (player2Icon == null) { return; }
-					player2Icon.GetComponent<FaceChanger>().hp = floatData;
+					player2Icon.GetComponent<BRival>().NowHp = floatData;
 					break;
 
 				case (int)Tag.End:
@@ -256,8 +247,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 					if (manager2 == null) {
 						return;
 					}
-
-					manager2.GetComponent<MainManager>().GameOver();
+					manager2.GetComponent<MainManager>().GameOver(false);
 					break;
 			}
 		}

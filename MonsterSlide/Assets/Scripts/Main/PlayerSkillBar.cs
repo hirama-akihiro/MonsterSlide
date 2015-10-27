@@ -18,7 +18,10 @@ public class PlayerSkillBar : SingletonMonoBehavior<PlayerSkillBar> {
 
 	CutInManager cutInManagerCls;
 
-	private GameObject gauge;
+	/// <summary>
+	/// プレイヤースキルゲージObject
+	/// </summary>
+	public GameObject gauge;
 
 	// Use this for initialization
 	void Start () {

@@ -35,7 +35,6 @@ public class WinLose : MonoBehaviour {
 		if (enable) {
 			gameObject.GetComponent<SpriteRenderer>().sprite = WinTexture;
 		} else {
-
 			gameObject.GetComponent<SpriteRenderer>().sprite = LoseTexture;
 		}
 	}

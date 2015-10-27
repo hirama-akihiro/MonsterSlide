@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HumanOpponent : BOpponent {
+public class HumanRival : BRival {
 
 	// Use this for initialization
 	void Start () {

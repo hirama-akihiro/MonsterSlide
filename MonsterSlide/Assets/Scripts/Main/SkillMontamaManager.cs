@@ -3,28 +3,35 @@ using System.Collections;
 
 public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 
-	//  ↓  Author kazuki ito	
+	/// <summary>
+	/// 各モンクリのスキルゲージ
+	/// </summary>
 	public GameObject[] SkillGauge;
 
+	/// <summary>
+	/// 各モンクリのスキルゲージ枠
+	/// </summary>
 	public GameObject[] skillGaugeWaku;
 
+	/// <summary>
+	/// 最大スキルポイント時に用いるマテリアル
+	/// </summary>
 	public Material maxSkillPtMat;
-	public GameObject maxSkillPtEffect;
 
-	private bool isBegin = true;
+	/// <summary>
+	/// スキルポイント追加時のエフェクト
+	/// </summary>
+	public GameObject maxSkillPtEffect;
 	
+	/// <summary>
+	/// スキルオブジェクト
+	/// </summary>
 	GameObject[] skills = new GameObject[4];
 
-	int[] montamaData = new int[4];
-	//  ↑ Author kabuki ito
-
-
 	// Use this for initialization
-	void Start () {
-		//DontDestroyOnLoad(this);
-
-		//  ↓  Author kazuki ito
-		GameObject skillParent = GameObject.Find ("SkillMontamas");
+	void Start()
+	{
+		GameObject skillParent = GameObject.Find("SkillMontamas");
 		int[] ary = new int[4];
 		switch (BattleTypeManager.I.battleType)
 		{
@@ -43,10 +50,8 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 				break;
 		}
 
-		//string montamaData = " ";
 		for (int i = 0; i < 4; i++)
 		{
-			montamaData[i] = i;
 			skills[i] = Instantiate(PartyManager.I.GetSkillMonkuri(i));
 			skills[i].transform.SetParent(skillParent.transform);
 			skills[i].transform.position = SkillGauge[i].transform.position;
@@ -54,15 +59,6 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 			skills[i].GetComponent<SkillMontama>().SetGaugeWaku(skillGaugeWaku[i]);
 		}
 	}
-//#if UNITY_ANDROID && !UNITY_EDITOR
-//		GameObject Bt = GameObject.FindGameObjectWithTag ("BlueTooth");
-//		AndroidBlueToothAdapter BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
-//		if (BtAdapter != null) {
-//			BtAdapter.SendStringData(montamaData,Tag.RivalSkillData);
-//		}
-//#endif
-//		//  ↑ Author kabuki ito
-//	}
 
 	
 	// Update is called once per frame
@@ -74,17 +70,14 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 	/// </summary>
 	/// <param name="serialId"></param>
 	/// <param name="skillPt"></param>
-	///  ↓  Author kazuki ito
 	public void AddSkillPt(int serialId,float skillPt)
 	{
-		//GameObject[] montamas = GameObject.FindGameObjectsWithTag("SkillMontama");
-		foreach (GameObject montama in skills)//montamas)
+		foreach (GameObject montama in skills)
 		{
 			SkillMontama skillclass = montama.GetComponent<SkillMontama>();
 			if (skillclass.serialId == serialId) { skillclass.addSkillPt(skillPt); }
 		}
 	}
-	//  ↑ Author kabuki ito
 
 	public GameObject GetSkillMontama(int serialId)
 	{
@@ -96,17 +89,9 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 		return montamas[0];
 	}
 
-	public void GameEnd()
-	{
-		enabled = false;
-	}
+	public void GameEnd() { enabled = false; }
 
-	//  ↓  Author kazuki ito
-	public void GameStart()
-	{
-		enabled = true;
-
-	}
+	public void GameStart() { enabled = true; }
 
 	public void SkillButtomEnable(bool enable)
 	{
@@ -116,13 +101,6 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 			foreach (GameObject obj in skills) { obj.GetComponent<SkillMontama>().enabled = false; }
 		}
 	}
-
-
-	public int[] getMontanaData()
-	{
-		return montamaData;
-	}
-	//  ↑ Author kabuki ito
 
 	/// <summary>
 	/// ゲーム終了時にTrue

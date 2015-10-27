@@ -60,11 +60,11 @@ public class LaneBlock : MonoBehaviour {
 		puzzleMontama.GetComponent<PuzzleMontama>().transform.parent = transform;
 
 		// 最上段に設置された時，ゲームクリア
-		if (Column == 0 && 1 <= Row && Row <= LaneManager.LANEMAINWIDTH)
-		{
-			MainManager.I.IsGameOver = true;
-			GameEnder.I.IsGameEnd = true;
-		}
+		//if (Column == 0 && 1 <= Row && Row <= LaneManager.LANEMAINWIDTH)
+		//{
+		//	MainManager.I.IsGameOver = true;
+		//	GameEnder.I.IsGameEnd = true;
+		//}
 
 		// モンタマをセット後，連鎖チェック
 		if (isChainCheck) { LaneManager.I.MontamaChainCheck(HoldMontama.GetComponent<PuzzleMontama>().serialID, Row, Column); }
