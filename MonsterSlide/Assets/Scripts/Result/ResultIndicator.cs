@@ -42,7 +42,7 @@ public class ResultIndicator : MonoBehaviour {
 	void Start()
 	{
 		// ゲームのBGMを止める
-		AudioManager.Instance.StopAudio();
+		AudioManager.I.StopAudio();
 
 		//  ↓  Author kazuki ito
 
@@ -59,7 +59,7 @@ public class ResultIndicator : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		if (CrossInput.Instance.IsDown () && !request) {
+		if (CrossInput.I.IsDown () && !request) {
 			Retry.SetActive(true);
 			Darken.SetActive(true);
 		}
@@ -189,7 +189,7 @@ public class ResultIndicator : MonoBehaviour {
 		
 		noRetry = false;
 		Destroy(Bt);
-		AudioManager.Instance.PlayAudio("game_maoudamashii_4_field11");
+		AudioManager.I.PlayAudio("game_maoudamashii_4_field11");
 		FadeManager.Instance.LoadLevel("Home", 0.5f);
 	}
 

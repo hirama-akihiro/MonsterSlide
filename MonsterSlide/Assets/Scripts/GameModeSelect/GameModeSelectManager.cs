@@ -15,7 +15,7 @@ public class GameModeSelectManager : MonoBehaviour {
 
 	public void OnClickBattle()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("BattleModeSelect", 0.5f);
 	}
 }

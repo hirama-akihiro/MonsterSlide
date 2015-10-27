@@ -41,17 +41,17 @@ public class PuzzleMontama : MonoBehaviour {
 		if (ParentLane != null) { transform.position = ParentLane.transform.position; }
 
 		// 止まらない限りfallSpeedで落下する
-		if (!IsStop) { transform.Translate(0, -FallSpeedManager.Instance.GetFallSpeedMagnification() * Time.deltaTime, 0); }
+		if (!IsStop) { transform.Translate(0, -FallSpeedManager.I.GetFallSpeedMagnification() * Time.deltaTime, 0); }
 
 		// 目標ポイントと一定以上近いなら
 		//if (Vector3.Distance(transform.position, TargetPos) < 0.1)
 		if(transform.position.y < TargetPos.y + 0.1f)
 		{
-			if (LaneManager.Instance.IsLockLane(transform.position) && !IsStop)
+			if (LaneManager.I.IsLockLane(transform.position) && !IsStop)
 			{
-				if (!LaneManager.Instance.IsHoldLane(transform.position))
+				if (!LaneManager.I.IsHoldLane(transform.position))
 				{
-					GameObject laneBlock = LaneManager.Instance.GetTouchPosLaneObject(transform.position);
+					GameObject laneBlock = LaneManager.I.GetTouchPosLaneObject(transform.position);
 					transform.parent = laneBlock.transform;
 					transform.position = TargetPos;
 					laneBlock.GetComponent<LaneBlock>().SetHold(gameObject, true);
@@ -64,10 +64,10 @@ public class PuzzleMontama : MonoBehaviour {
 		}
 
 		// 連続して落ちた時上手く行くように下のブロックに設置されていたら行こうえで止まる
-		if ((LaneManager.Instance.IsHoldLane(TargetPos)) && !IsStop)
+		if ((LaneManager.I.IsHoldLane(TargetPos)) && !IsStop)
 		{
 			Vector3 setPos = TargetPos + new Vector3(0, 1, 0);
-			GameObject laneBlock = LaneManager.Instance.GetTouchPosLaneObject(setPos);
+			GameObject laneBlock = LaneManager.I.GetTouchPosLaneObject(setPos);
 			if (laneBlock)
 			{
 				transform.parent = laneBlock.transform;

@@ -62,9 +62,9 @@ public class MontamaGenerator : MonoBehaviour {
 				puzzleMontama2.transform.position += new Vector3(0, -1, 0);
 				puzzleMontama1.GetComponent<PuzzleMontama>().TargetPos = puzzleMontama1.transform.position + new Vector3(0, -1, 0);
 				puzzleMontama1.GetComponent<PuzzleMontama>().IsNoBegin = false;
-				puzzleMontama1.GetComponent<PuzzleMontama>().aryIndex = PuzzleMontamaManager.Instance.PuzzleMontamas.Count;
-				PuzzleMontamaManager.Instance.PuzzleMontamas.Add(puzzleMontama1.GetComponent<PuzzleMontama>());
-				PuzzleMontamaManager.Instance.DeleteNullObject();
+				puzzleMontama1.GetComponent<PuzzleMontama>().aryIndex = PuzzleMontamaManager.I.PuzzleMontamas.Count;
+				PuzzleMontamaManager.I.PuzzleMontamas.Add(puzzleMontama1.GetComponent<PuzzleMontama>());
+				PuzzleMontamaManager.I.DeleteNullObject();
 
 				// 新しいモンタマをセット
 				puzzleMontama1 = puzzleMontama2;

@@ -72,10 +72,9 @@ public class SkillMontama : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// タッチ時にスキル発動
-		if(CrossInput.Instance.IsDown())
+		if(CrossInput.I.IsDown())
 		{
-			Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(CrossInput.Instance.ScreenPosition);
-			Debug.Log(aTapPoint);
+			Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(CrossInput.I.ScreenPosition);
 			Collider2D[] collider2Ds = Physics2D.OverlapPointAll(aTapPoint);
 			if (collider2Ds.Length > 0)
 			{
@@ -107,12 +106,12 @@ public class SkillMontama : MonoBehaviour {
 	public void addSkillPt(float pt)
 	{
 		nowSkillPt += pt * mag;
-		Instantiate(SkillMontamaManager.Instance.maxSkillPtEffect, transform.position, transform.rotation);
+		Instantiate(SkillMontamaManager.I.maxSkillPtEffect, transform.position, transform.rotation);
 
 		if (nowSkillPt >= maxSkillPt)
 		{
 			nowSkillPt = maxSkillPt;
-			gaugeWaku.GetComponent<Image>().material = SkillMontamaManager.Instance.maxSkillPtMat;
+			gaugeWaku.GetComponent<Image>().material = SkillMontamaManager.I.maxSkillPtMat;
 		}
 		else { gaugeWaku.GetComponent<Image>().material = null; }
 		gauge.GetComponent<Image>().fillAmount = nowSkillPt / maxSkillPt;
@@ -121,7 +120,7 @@ public class SkillMontama : MonoBehaviour {
 	public void SkillPointMax()
 	{
 		nowSkillPt = maxSkillPt;
-		gaugeWaku.GetComponent<Image>().material = SkillMontamaManager.Instance.maxSkillPtMat;
+		gaugeWaku.GetComponent<Image>().material = SkillMontamaManager.I.maxSkillPtMat;
 		gauge.GetComponent<Image>().fillAmount = nowSkillPt / maxSkillPt;
 	}
 }

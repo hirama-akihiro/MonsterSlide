@@ -7,7 +7,7 @@ public class MGeneStop : MSkillBase {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayAudio("se_Genbu");
+		AudioManager.I.PlayAudio("se_Genbu");
 	}
 	
 	// Update is called once per frame
@@ -18,6 +18,6 @@ public class MGeneStop : MSkillBase {
 	public override void ActionSkill()
 	{
 		// モンタマの生成をStopTime間止める
-		GeneratorManager.Instance.GeneTimeLimit = stopTime;
+		GeneratorManager.I.GeneTimeLimit = stopTime;
 	}
 }

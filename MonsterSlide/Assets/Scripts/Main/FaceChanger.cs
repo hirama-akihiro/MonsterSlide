@@ -17,7 +17,7 @@ public class FaceChanger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isPlayer1) { hp = LaneManager.Instance.OldHp; }
+		if (isPlayer1) { hp = LaneManager.I.OldHp; }
 
 		if(hp < 0.6)
 		{

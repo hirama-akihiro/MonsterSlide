@@ -12,11 +12,12 @@ public class SingletonMonoBehavior<T> : MonoBehaviour where T : MonoBehaviour
 	/// </summary>
 	private static T instance;
 
-	public static T Instance
+	public static T I
 	{
 		get
 		{
 			if (instance == null) { instance = (T)FindObjectOfType(typeof(T)); }
+			if(instance == null) { Debug.Log(typeof(T) + " is nothing"); }
 			return instance;
 		}
 	}
@@ -33,7 +34,7 @@ public class SingletonMonoBehavior<T> : MonoBehaviour where T : MonoBehaviour
 
 	protected bool CheckInstance()
 	{
-		if (this == Instance) { return this; }
+		if (this == I) { return this; }
 		Destroy(this);
 		return false;
 	}

@@ -14,7 +14,7 @@ public class MMonkuriBite : MSkillBase {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayAudio("se_hell");
+		AudioManager.I.PlayAudio("se_hell");
 	}
 	
 	// Update is called once per frame
@@ -44,10 +44,10 @@ public class MMonkuriBite : MSkillBase {
 		// 仕様変更後のスキル:凍らせるあれ
 		for (int i = 0; i < MAXBITEMONKURI; i++)
 		{
-			int index = Random.Range(0, PuzzleMontamaManager.Instance.PuzzleMontamas.Count);
+			int index = Random.Range(0, PuzzleMontamaManager.I.PuzzleMontamas.Count);
 			if (!montamaDict.ContainsKey(index))
 			{
-				montamaDict.Add(index, PuzzleMontamaManager.Instance.PuzzleMontamas[index]);
+				montamaDict.Add(index, PuzzleMontamaManager.I.PuzzleMontamas[index]);
 			}
 		}
 

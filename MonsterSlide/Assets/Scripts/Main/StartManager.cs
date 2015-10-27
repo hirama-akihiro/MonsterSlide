@@ -20,8 +20,8 @@ public class StartManager : MonoBehaviour {
 	void Start () {
 		
 		if (managerEnable) {
-			GameEnder.Instance.IsGameEnd = true;
-			SkillMontamaManager.Instance.SkillButtomEnable (false);
+			GameEnder.I.IsGameEnd = true;
+			SkillMontamaManager.I.SkillButtomEnable (false);
 #if UNITY_ANDROID && !UNITY_EDITOR
 		Bt = GameObject.FindGameObjectWithTag("BlueTooth");
 		BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
@@ -44,7 +44,7 @@ public class StartManager : MonoBehaviour {
 					BtAdapter.SendIntergerData (0, Tag.Start);
 				}
 				GetComponent<SpriteRenderer>().enabled = false;
-				SkillMontamaManager.Instance.SkillButtomEnable(true);
+				SkillMontamaManager.I.SkillButtomEnable(true);
 				enabled = false;
 			}
 		}
@@ -53,9 +53,9 @@ public class StartManager : MonoBehaviour {
 			float diff = Time.timeSinceLevelLoad - startTime;
 			if (diff > time)
 			{
-				AudioManager.Instance.PlayAudio("se_start");
+				AudioManager.I.PlayAudio("se_start");
 				GetComponent<SpriteRenderer>().enabled = false;
-				SkillMontamaManager.Instance.SkillButtomEnable(true);
+				SkillMontamaManager.I.SkillButtomEnable(true);
 				enabled = false;
 			}
 		}
@@ -69,8 +69,8 @@ public class StartManager : MonoBehaviour {
 			{
 				BtAdapter.SendIntergerData(0, Tag.Start);
 			}
-			GameEnder.Instance.IsGameEnd = false;
-			SkillMontamaManager.Instance.SkillButtomEnable(true);
+			GameEnder.I.IsGameEnd = false;
+			SkillMontamaManager.I.SkillButtomEnable(true);
 		}
 	}
 

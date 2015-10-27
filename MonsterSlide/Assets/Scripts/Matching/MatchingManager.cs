@@ -138,7 +138,7 @@ public class MatchingManager : MonoBehaviour {
 
 	public void OnClickReturn()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("ServerClientSelect", 0.5f);
 	}
 }

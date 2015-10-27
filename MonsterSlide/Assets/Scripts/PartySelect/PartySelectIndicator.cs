@@ -21,7 +21,7 @@ public class PartySelectIndicator : MonoBehaviour {
 	public void OnClickReturn()
 	{
 		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Home", 0.5f);
 	}
 }

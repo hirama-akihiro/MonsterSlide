@@ -12,7 +12,7 @@ public class MSuzakuSkill : MSkillBase{
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayAudio("se_Suzaku");
+		AudioManager.I.PlayAudio("se_Suzaku");
 		startTime = Time.time;
 	}
 	
@@ -34,10 +34,10 @@ public class MSuzakuSkill : MSkillBase{
 		// 仕様変更後のスキル:凍らせるあれ
 		for (int i = 0; i < MAXMAGUMAMONKURI; i++)
 		{
-			int index = Random.Range(0, PuzzleMontamaManager.Instance.PuzzleMontamas.Count);
+			int index = Random.Range(0, PuzzleMontamaManager.I.PuzzleMontamas.Count);
 			if (!montamaDict.ContainsKey(index))
 			{
-				montamaDict.Add(index, PuzzleMontamaManager.Instance.PuzzleMontamas[index]);
+				montamaDict.Add(index, PuzzleMontamaManager.I.PuzzleMontamas[index]);
 			}
 		}
 

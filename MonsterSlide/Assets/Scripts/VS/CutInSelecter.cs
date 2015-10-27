@@ -13,7 +13,7 @@ public class CutInSelecter : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake() {
-		switch(BattleTypeManager.Instance.battleType)
+		switch(BattleTypeManager.I.battleType)
 		{
 			case BattleTypeManager.BattleType.NearBattle_Server:
 				cutInPlayer1.GetComponent<SpriteRenderer>().sprite = serverPlayer1Sprite;

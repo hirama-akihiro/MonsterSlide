@@ -26,7 +26,7 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 		//  ↓  Author kazuki ito
 		GameObject skillParent = GameObject.Find ("SkillMontamas");
 		int[] ary = new int[4];
-		switch (BattleTypeManager.Instance.battleType)
+		switch (BattleTypeManager.I.battleType)
 		{
 			case BattleTypeManager.BattleType.NearBattle_Server:
 				ary[0] = 1;
@@ -47,7 +47,7 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 		for (int i = 0; i < 4; i++)
 		{
 			montamaData[i] = i;
-			skills[i] = Instantiate(PartyManager.Instance.GetSkillMonkuri(i));
+			skills[i] = Instantiate(PartyManager.I.GetSkillMonkuri(i));
 			skills[i].transform.SetParent(skillParent.transform);
 			skills[i].transform.position = SkillGauge[i].transform.position;
 			skills[i].GetComponent<SkillMontama>().SetGauge(SkillGauge[i]);

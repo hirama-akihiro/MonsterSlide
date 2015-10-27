@@ -24,31 +24,31 @@ public class PartyInfoManager : MonoBehaviour {
 
 	public void OnClickKimera()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.I.PlayAudio("se_maoudamashii_system49");
 		GetComponent<Image>().sprite = kimeraInfoSprite;
 	}
 
 	public void OnClickKetsi()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.I.PlayAudio("se_maoudamashii_system49");
 		GetComponent<Image>().sprite = ketsiInfoSprite;
 	}
 
 	public void OnClickSuzaku()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.I.PlayAudio("se_maoudamashii_system49");
 		GetComponent<Image>().sprite = suzakuInfoSprite;
 	}
 
 	public void OnClickGenbu()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.I.PlayAudio("se_maoudamashii_system49");
 		GetComponent<Image>().sprite = genbuInfoSprite;
 	}
 
 	public void OnClickMaster()
 	{
-		AudioManager.Instance.PlayAudio("se_maoudamashii_system49");
+		AudioManager.I.PlayAudio("se_maoudamashii_system49");
 		GetComponent<Image>().sprite = masterInfoSprite;
 	}
 }

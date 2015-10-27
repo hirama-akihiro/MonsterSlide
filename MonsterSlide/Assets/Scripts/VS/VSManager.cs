@@ -22,7 +22,7 @@ public class VSManager : SingletonMonoBehavior<VSManager> {
 		if (Time.timeSinceLevelLoad - startTime > 1 && !isSe)
 		{
 			// カットイン用のSEを鳴らす
-			AudioManager.Instance.PlayAudio("se_skillCutIn");
+			AudioManager.I.PlayAudio("se_skillCutIn");
 			isSe = true;
 		}
 

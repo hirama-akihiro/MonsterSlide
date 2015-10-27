@@ -10,9 +10,11 @@ public class BattleTypeManager : SingletonMonoBehavior<BattleTypeManager> {
 	/// </summary>
 	public BattleType battleType;
 
+	protected override void Awake() { base.Awake(); }
+
 	// Use this for initialization
 	void Start () {
-		DontDestroyOnLoad(this);
+		DontDestroyOnLoad(gameObject);
 	}
 	
 	// Update is called once per frame

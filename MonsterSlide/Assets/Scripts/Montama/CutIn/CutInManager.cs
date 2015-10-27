@@ -37,9 +37,9 @@ public class CutInManager : SingletonMonoBehavior<CutInManager> {
 			i++;
 		}
 	
-		if (i >= cutIns.Length && !LaneManager.Instance.IsGameEnd) {
+		if (i >= cutIns.Length && !LaneManager.I.IsGameEnd) {
 			darken.SetActive(false);
-			GameEnder.Instance.IsGameEnd = false;
+			GameEnder.I.IsGameEnd = false;
 		}
 	}
 
@@ -56,8 +56,8 @@ public class CutInManager : SingletonMonoBehavior<CutInManager> {
 		{
 			// カットイン用のSEを鳴らす
 			isCreate = true;
-			AudioManager.Instance.PlayAudio("se_skillCutIn");
-			GameEnder.Instance.IsGameEnd = true;
+			AudioManager.I.PlayAudio("se_skillCutIn");
+			GameEnder.I.IsGameEnd = true;
 			darken.SetActive(true);
 			if(rivalSkill)
 			{
@@ -73,9 +73,9 @@ public class CutInManager : SingletonMonoBehavior<CutInManager> {
 			if (i < cutIns.Length)
 			{
 				// カットイン用のSEを鳴らす
-				AudioManager.Instance.PlayAudio("se_skillCutIn");
+				AudioManager.I.PlayAudio("se_skillCutIn");
 				isCreate = true;
-				GameEnder.Instance.IsGameEnd = true;
+				GameEnder.I.IsGameEnd = true;
 				darken.SetActive(true);
 				if (rivalSkill)
 				{

@@ -13,15 +13,15 @@ public class MEvenLaneLock : MSkillBase {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayAudio("se_Kimera");
+		AudioManager.I.PlayAudio("se_Kimera");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (ElapsedTime > skillTime)
 		{
-			DrawLaneBlockManager.Instance.NoMoveColumns.Clear();
-			LaneManager.Instance.NoMoveColumns.Clear();
+			DrawLaneBlockManager.I.NoMoveColumns.Clear();
+			LaneManager.I.NoMoveColumns.Clear();
 			foreach (GameObject aSkill in skillEffects) { Destroy(aSkill);  }
 			skillEffects.Clear();
 			Destroy(gameObject);
@@ -43,9 +43,9 @@ public class MEvenLaneLock : MSkillBase {
 			{
 				skillEffects.Add(Instantiate(skillHebiEffefct, new Vector3(4f, -i, 0), transform.rotation) as GameObject);
 			}
-			LaneManager.Instance.NoMoveColumns.Add(i);
+			LaneManager.I.NoMoveColumns.Add(i);
 		}
 
-		DrawLaneBlockManager.Instance.DrawNoMoveLane();
+		DrawLaneBlockManager.I.DrawNoMoveLane();
 	}
 }

@@ -127,21 +127,20 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	
 	// Update is called once per frame
 	void Update () {
-		//Debug.LogFormat("Row:{0},Column{1}", moveRow, moveColumn);
 		// 入力された瞬間に呼ばれる
-		if (CrossInput.Instance.IsDown()) { EventInputIsDown(); }
+		if (CrossInput.I.IsDown()) { EventInputIsDown(); }
 
 		// 入力されている間に呼ばれる
-		if (CrossInput.Instance.IsMove()) { EventInputIsMove(); }
+		if (CrossInput.I.IsMove()) { EventInputIsMove(); }
 
 		// 入力が終了した瞬間に呼ばれる
-		if (CrossInput.Instance.IsUp()) { EventInputIsUp(); }
+		if (CrossInput.I.IsUp()) { EventInputIsUp(); }
 
 		// レーンマトリックのGameObjectの更新
 		if (!IsMoveLane()) { UpdateLaneMatrixIndex(); }
 
 		// レーン移動後に各モンタマが4つ繋がっているか確認
-		if (!IsMoveLane() && !CrossInput.Instance.IsNowDown)
+		if (!IsMoveLane() && !CrossInput.I.IsNowDown)
 		{
 			foreach (GameObject blockObj in movingBlocks)
 			{
@@ -166,14 +165,14 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	private void EventInputIsDown()
 	{
 		isSlideMoveLane = false;
-		beginTouchPos = Camera.main.ScreenToWorldPoint(CrossInput.Instance.ScreenPosition);
+		beginTouchPos = Camera.main.ScreenToWorldPoint(CrossInput.I.ScreenPosition);
 		GameObject obj = GetTouchPosLaneObject(beginTouchPos);
 		if (obj == null) { return; }
 		if (noMoveColumns.Contains(obj.GetComponent<LaneBlock>().Column)) { return; }
 		isLaneMovable = true;
 		moveRow = obj.GetComponent<LaneBlock>().Row;
 		moveColumn = obj.GetComponent<LaneBlock>().Column;
-		DrawLaneBlockManager.Instance.DrawTapLane();
+		DrawLaneBlockManager.I.DrawTapLane();
 	}
 
 	/// <summary>
@@ -181,40 +180,26 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	/// </summary>
 	private void EventInputIsMove()
 	{
-		//Vector3 nowTouchPos = Camera.main.ScreenToWorldPoint(CrossInput.Instance.ScreenPosition);
-		//if ((beginTouchPos.x - nowTouchPos.x) > 1 && !IsMoveEndLane())
-		//{
-		//	UpdateLaneMatrix();
-		//	UpdateLaneMatrixIndex();
-		//	beginTouchPos = nowTouchPos;
-
-		//	MoveLaneBlocks(Direction.LEFT);
-		//	DrawClearLaneColor();
-		//	DrawLaneBlockManager.Instance.DrawClear();
-		//}
-
-		Vector3 nowTouchPos = Camera.main.ScreenToWorldPoint(CrossInput.Instance.ScreenPosition);
+		Vector3 nowTouchPos = Camera.main.ScreenToWorldPoint(CrossInput.I.ScreenPosition);
 		if ((nowTouchPos.x - beginTouchPos.x) > 1 && !IsMoveLane())
 		{
-			AudioManager.Instance.PlayAudio("se_frick");
+			AudioManager.I.PlayAudio("se_frick");
 			isSlideMoveLane = true;
 			UpdateLaneMatrix();
 			UpdateLaneMatrixIndex();
 			UpdateBothEndMontama();
 			beginTouchPos += new Vector3(1, 0, 0);
 			MoveLaneBlocks(Direction.RIGHT);
-			//DrawLaneBlockManager.Instance.DrawClear();
 		}
 		if ((nowTouchPos.x - beginTouchPos.x) < -1 && !IsMoveLane())
 		{
-			AudioManager.Instance.PlayAudio("se_frick");
+			AudioManager.I.PlayAudio("se_frick");
 			isSlideMoveLane = true;
 			UpdateLaneMatrix();
 			UpdateLaneMatrixIndex();
 			UpdateBothEndMontama();
 			beginTouchPos += new Vector3(-1, 0, 0);
 			MoveLaneBlocks(Direction.LEFT);
-			//DrawLaneBlockManager.Instance.DrawClear();
 		}
 	}
 
@@ -225,15 +210,14 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	{
 		if(!isSlideMoveLane)
 		{
-			lastDirection = CrossInput.Instance.GetFrickDirection();
+			lastDirection = CrossInput.I.GetFrickDirection();
 			if (lastDirection == Direction.DOWN)
 			{
-				AudioManager.Instance.PlayAudio("se_frick");
+				AudioManager.I.PlayAudio("se_frick");
 				RapidFallMontama();
 			}
 		}
-
-		DrawLaneBlockManager.Instance.DrawClear();
+		DrawLaneBlockManager.I.DrawClear();
 	}
 
 	/// <summary>
@@ -252,7 +236,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 				tmpLaneBlock.HoldMontama = Instantiate(setLaneBlock.HoldMontama, tmpLaneBlock.transform.position, tmpLaneBlock.transform.rotation) as GameObject;
 				tmpLaneBlock.HoldMontama.transform.parent = setLaneBlock.transform;
 				tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>().ParentLane = tmpLaneBlock.gameObject;
-				PuzzleMontamaManager.Instance.PuzzleMontamas.Add(tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>());
+				PuzzleMontamaManager.I.PuzzleMontamas.Add(tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>());
 			}
 
 			tmpLaneBlock = laneMatrix[i, LANEFRAMEWIDTH - 1].GetComponent<LaneBlock>();
@@ -263,8 +247,8 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 				tmpLaneBlock.HoldMontama = Instantiate(setLaneBlock.HoldMontama, tmpLaneBlock.transform.position, tmpLaneBlock.transform.rotation) as GameObject;
 				tmpLaneBlock.HoldMontama.transform.parent = setLaneBlock.transform;
 				tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>().ParentLane = tmpLaneBlock.gameObject;
-				PuzzleMontamaManager.Instance.PuzzleMontamas.Add(tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>());
-				PuzzleMontamaManager.Instance.DeleteNullObject();
+				PuzzleMontamaManager.I.PuzzleMontamas.Add(tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>());
+				PuzzleMontamaManager.I.DeleteNullObject();
 			}
 		}
 	}
@@ -275,8 +259,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	private void RapidFallMontama()
 	{
 		SortedDictionary<float, PuzzleMontama> rapidTargetMontama = new SortedDictionary<float, PuzzleMontama>();
-		//PuzzleMontamaManager.Instance.DeleteNullObject();
-		var puzzleMontamas = PuzzleMontamaManager.Instance.PuzzleMontamas;
+		var puzzleMontamas = PuzzleMontamaManager.I.PuzzleMontamas;
 		foreach (var montama in puzzleMontamas)
 		{
 			if (montama == null) { continue; }
@@ -327,8 +310,8 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	/// <param name="direction"></param>
 	private void MoveLaneBlocks(Direction direction)
 	{
-		if (LaneManager.Instance.MoveRow <= 0 || LaneManager.LANEMAINWIDTH < LaneManager.Instance.MoveRow) { return; }
-		if (LaneManager.Instance.MoveColumn <= 0 || LaneManager.LANEMAINHEIGHT < LaneManager.Instance.MoveColumn) { return; }
+		if (LaneManager.I.MoveRow <= 0 || LaneManager.LANEMAINWIDTH < LaneManager.I.MoveRow) { return; }
+		if (LaneManager.I.MoveColumn <= 0 || LaneManager.LANEMAINHEIGHT < LaneManager.I.MoveColumn) { return; }
 
 		// フリックが行われていない時は何もしない
 		if (direction == Direction.NOMOVE) { return; }
@@ -534,7 +517,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 
 		// 隣接数:4以上の時に消す
 		if (count < 5) { return; }
-		ComboManager.Instance.AddCombo(1);
+		ComboManager.I.AddCombo(1);
 		for (int i = 1; i <= LANEMAINHEIGHT; i++)
 		{
 			for (int j = 1; j <= LANEMAINWIDTH; j++)
@@ -544,7 +527,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 					GameObject puzzleMontama = laneMatrix[i, j].GetComponent<LaneBlock>().HoldMontama;
 					// 対象のモンタマのスキルポイントを貯める
 					GameObject carrier = Instantiate(SpCarrier, puzzleMontama.transform.position, puzzleMontama.transform.rotation) as GameObject;
-					GameObject skillMontama = SkillMontamaManager.Instance.GetSkillMontama(puzzleMontama.GetComponent<PuzzleMontama>().serialID);
+					GameObject skillMontama = SkillMontamaManager.I.GetSkillMontama(puzzleMontama.GetComponent<PuzzleMontama>().serialID);
 					carrier.GetComponent<SkillCarrier>().CarrySkillPt(skillMontama.GetComponent<SkillMontama>().serialId, 1, puzzleMontama.transform.position, skillMontama.transform.position);
 
 					puzzleMontama.GetComponent<PuzzleMontama>().DestroyMonkuri();
@@ -557,7 +540,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			}
 		}
 		// 消えたので消滅SEを鳴らす
-		AudioManager.Instance.PlayAudio("se_restMonkuri");
+		AudioManager.I.PlayAudio("se_restMonkuri");
 	}
 
 	/// <summary>
@@ -603,12 +586,12 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			for (int j = 1; j <= LANEMAINWIDTH; j++)
 			{
 				while (prevIndex == index) { index = Random.Range(0, PartyManager.MAXPARTYCOUNT); }
-				GameObject puzzleMonkuri = PartyManager.Instance.GetPuzzleMontama(index);
+				GameObject puzzleMonkuri = PartyManager.I.GetPuzzleMontama(index);
 				GameObject laneObj = laneMatrix[i, j];
 				GameObject holdMonkuri = Instantiate(puzzleMonkuri, laneObj.transform.position, laneObj.transform.rotation) as GameObject;
-				holdMonkuri.GetComponent<PuzzleMontama>().aryIndex = PuzzleMontamaManager.Instance.PuzzleMontamas.Count;
-				PuzzleMontamaManager.Instance.DeleteNullObject();
-				PuzzleMontamaManager.Instance.PuzzleMontamas.Add(holdMonkuri.GetComponent<PuzzleMontama>());
+				holdMonkuri.GetComponent<PuzzleMontama>().aryIndex = PuzzleMontamaManager.I.PuzzleMontamas.Count;
+				PuzzleMontamaManager.I.DeleteNullObject();
+				PuzzleMontamaManager.I.PuzzleMontamas.Add(holdMonkuri.GetComponent<PuzzleMontama>());
 				laneObj.GetComponent<LaneBlock>().SetHold(holdMonkuri, false);
 				prevIndex = index;
 			}
@@ -653,7 +636,6 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			{
 				BtAdapter.SendFloatData(hp,Tag.HP);
 			}
-			Debug.Log ("hp=" + hp);
 		}
 		return;
 	}

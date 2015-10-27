@@ -16,7 +16,7 @@ public class BattleModeSelect : MonoBehaviour {
 	public void OnClickNearBattle()
 	{
 		StartManager.SetManagerEnable(true);
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("ServerClientSelect", 0.5f);
 	}
 }

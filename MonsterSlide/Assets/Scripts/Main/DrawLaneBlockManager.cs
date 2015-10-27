@@ -59,19 +59,19 @@ public class DrawLaneBlockManager : SingletonMonoBehavior<DrawLaneBlockManager> 
 
 	public void DrawTapLane()
 	{
-		if (LaneManager.Instance.MoveRow <= 0 || LaneManager.LANEMAINWIDTH < LaneManager.Instance.MoveRow) { return; }
-		if (LaneManager.Instance.MoveColumn <= 0 || LaneManager.LANEMAINHEIGHT < LaneManager.Instance.MoveColumn) { return; }
+		if (LaneManager.I.MoveRow <= 0 || LaneManager.LANEMAINWIDTH < LaneManager.I.MoveRow) { return; }
+		if (LaneManager.I.MoveColumn <= 0 || LaneManager.LANEMAINHEIGHT < LaneManager.I.MoveColumn) { return; }
 		for (int i = 0; i < LaneManager.LANEMAINHEIGHT; i++)
 		{
-			drawLaneMatrix[i, LaneManager.Instance.MoveRow - 1].GetComponent<SpriteRenderer>().sprite = touchLaneSprite;
+			drawLaneMatrix[i, LaneManager.I.MoveRow - 1].GetComponent<SpriteRenderer>().sprite = touchLaneSprite;
 		}
 		for(int i = 0; i < LaneManager.LANEMAINWIDTH;i++)
 		{
-			drawLaneMatrix[LaneManager.Instance.MoveColumn - 1, i].GetComponent<SpriteRenderer>().sprite = touchLaneSprite;
+			drawLaneMatrix[LaneManager.I.MoveColumn - 1, i].GetComponent<SpriteRenderer>().sprite = touchLaneSprite;
 		}
-		yokoSlideLine.transform.position = new Vector3(4f, -LaneManager.Instance.MoveColumn, 0.0f);
+		yokoSlideLine.transform.position = new Vector3(4f, -LaneManager.I.MoveColumn, 0.0f);
 		yokoSlideLine.GetComponent<SpriteRenderer>().enabled = true;
-		tateSlideLine.transform.position = new Vector3(LaneManager.Instance.MoveRow, -5f, 0.0f);
+		tateSlideLine.transform.position = new Vector3(LaneManager.I.MoveRow, -5f, 0.0f);
 		tateSlideLine.GetComponent<SpriteRenderer>().enabled = true;
 	}
 

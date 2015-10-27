@@ -28,9 +28,9 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 	/// </summary>
 	public void GameEnd()
 	{
-		GeneratorManager.Instance.GameEnd();
-		SkillMontamaManager.Instance.GameEnd();
-		LaneManager.Instance.GameEnd();
+		GeneratorManager.I.GameEnd();
+		SkillMontamaManager.I.GameEnd();
+		LaneManager.I.GameEnd();
 		GameObject[] puzzleMontamas = GameObject.FindGameObjectsWithTag("Montama");
 		foreach (GameObject puzzleMontama in puzzleMontamas) {
 			puzzleMontama.GetComponent<PuzzleMontama>().GameEnd();
@@ -39,9 +39,9 @@ public class GameEnder : SingletonMonoBehavior<GameEnder> {
 
 	public void GameStart()
 	{
-		GeneratorManager.Instance.GameStart ();
-		SkillMontamaManager.Instance.GameStart ();
-		LaneManager.Instance.GameStart ();
+		GeneratorManager.I.GameStart ();
+		SkillMontamaManager.I.GameStart ();
+		LaneManager.I.GameStart ();
 		GameObject[] puzzleMontamas = GameObject.FindGameObjectsWithTag("Montama");
 		foreach (GameObject puzzleMontama in puzzleMontamas) {
 			puzzleMontama.GetComponent<PuzzleMontama>().GameStart();

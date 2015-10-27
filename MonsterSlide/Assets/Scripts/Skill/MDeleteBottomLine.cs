@@ -11,7 +11,7 @@ public class MDeleteBottomLine : MSkillBase {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayAudio("se_Dragon");
+		AudioManager.I.PlayAudio("se_Dragon");
 	}
 	
 	// Update is called once per frame
@@ -27,23 +27,19 @@ public class MDeleteBottomLine : MSkillBase {
 		{
 
 			// モンクリが消えた時
-			GameObject puzzleMontama =  LaneManager.Instance.LaneMatrix[LaneManager.LANEMAINHEIGHT, i].GetComponent<LaneBlock>().HoldMontama;
+			GameObject puzzleMontama =  LaneManager.I.LaneMatrix[LaneManager.LANEMAINHEIGHT, i].GetComponent<LaneBlock>().HoldMontama;
 			if (puzzleMontama == null) { continue; }
-
-			// 火炎エフェクト
-			//if (i == (int)(LaneManager.LANEMAINHEIGHT * 0.5)) { Instantiate(fireEffect, new Vector3(0, 0, 0), Quaternion.identity); }
-			//Instantiate(firePrefab, puzzleMontama.transform.position, puzzleMontama.transform.rotation);
 
 			// 対象のモンタマのスキルポイントを貯める
 			GameObject carrier = Instantiate(SpCarrier, puzzleMontama.transform.position, puzzleMontama.transform.rotation) as GameObject;
-			GameObject skillMontama = SkillMontamaManager.Instance.GetSkillMontama(puzzleMontama.GetComponent<PuzzleMontama>().serialID);
+			GameObject skillMontama = SkillMontamaManager.I.GetSkillMontama(puzzleMontama.GetComponent<PuzzleMontama>().serialID);
 			carrier.GetComponent<SkillCarrier>().CarrySkillPt(skillMontama.GetComponent<SkillMontama>().serialId, 1, puzzleMontama.transform.position, skillMontama.transform.position);
-			SkillMontamaManager.Instance.AddSkillPt(puzzleMontama.GetComponent<PuzzleMontama>().serialID, 1.0f);
-			PlayerSkillBar.Instance.AddSkillPt(1);
+			SkillMontamaManager.I.AddSkillPt(puzzleMontama.GetComponent<PuzzleMontama>().serialID, 1.0f);
+			PlayerSkillBar.I.AddSkillPt(1);
 
 			//puzzleMontama.GetComponent<PuzzleMontama>().DestroyMonkuri();
 			Destroy(puzzleMontama);
-			LaneManager.Instance.LaneMatrix[LaneManager.LANEMAINHEIGHT, i].GetComponent<LaneBlock>().HoldMontama = null;
+			LaneManager.I.LaneMatrix[LaneManager.LANEMAINHEIGHT, i].GetComponent<LaneBlock>().HoldMontama = null;
 		}
 	}
 }

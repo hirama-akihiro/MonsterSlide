@@ -18,7 +18,7 @@ public class MenuBar : MonoBehaviour {
 	/// </summary>
 	public void OnClickHome()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Home", 0.5f);
 	}
 
@@ -27,7 +27,7 @@ public class MenuBar : MonoBehaviour {
 	/// </summary>
 	public void OnClickGame()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("GameModeSelect", 0.5f);
 	}
 
@@ -36,7 +36,7 @@ public class MenuBar : MonoBehaviour {
 	/// </summary>
 	public void OnClickParty()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("PartySelect", 0.5f);
 	}
 
@@ -45,7 +45,7 @@ public class MenuBar : MonoBehaviour {
 	/// </summary>
 	public void OnClickGacha()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 	}
 
 	/// <summary>
@@ -53,6 +53,6 @@ public class MenuBar : MonoBehaviour {
 	/// </summary>
 	public void OnClickSupport()
 	{
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 	}
 }

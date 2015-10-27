@@ -12,7 +12,7 @@ public class MAddSkillPt : MSkillBase {
 
 	// Use this for initialization
 	void Start () {
-		AudioManager.Instance.PlayAudio("se_Ketsi");
+		AudioManager.I.PlayAudio("se_Ketsi");
 	}
 	
 	// Update is called once per frame

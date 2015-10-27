@@ -4,11 +4,8 @@ using System.Collections;
 public class MainManager : SingletonMonoBehavior<MainManager> {
 
 	/// <summary>
-	/// GUISkin
+	/// 勝敗用Prefab
 	/// </summary>
-	public GUISkin guiSkin;
-
-	//  ↓ Author kazuki ito
 	public GameObject WinLosePrefab;
 
 	GameObject Bt;
@@ -16,14 +13,13 @@ public class MainManager : SingletonMonoBehavior<MainManager> {
 	AndroidBlueToothAdapter BtAdapter;
 	
 	static bool winner = false;
-	//  ↑ Author kabuki ito
 	
 	// Use this for initialization
 	protected override void Awake()
 	{
 		base.Awake();
-		AudioManager.Instance.StopAudio();
-		AudioManager.Instance.PlayAudio("bgm_battle", AudioManager.PlayMode.Repeat);
+		AudioManager.I.StopAudio();
+		AudioManager.I.PlayAudio("bgm_battle", AudioManager.PlayMode.Repeat, 0.5f);
 
 		//  ↓ Author kazuki ito
 		ResultIndicator.setNoRetry (false);
@@ -43,7 +39,6 @@ public class MainManager : SingletonMonoBehavior<MainManager> {
 		if(BtAdapter != null)
 		{
 			BtAdapter.SendIntergerData (0, Tag.End);
-
 		}
 		IsGameOver = false;
 		FadeManager.Instance.LoadLevel("Result", 0.5f);
@@ -54,13 +49,12 @@ public class MainManager : SingletonMonoBehavior<MainManager> {
 	{
 
 		if (IsGameOver) {
-			SkillMontamaManager.Instance.SkillButtomEnable(false);
-			GameEnder.Instance.IsGameEnd =true;
+			SkillMontamaManager.I.SkillButtomEnable(false);
+			GameEnder.I.IsGameEnd =true;
 			if(BtAdapter != null)
 			{
 				BtAdapter.SendFloatData(0f,Tag.End);
 				//BtAdapter.SendIntergerData(-1, Tag.End);
-				Debug.Log(BtAdapter);
 			}
 			GameObject WinLose = Instantiate(WinLosePrefab);
 			WinLose.GetComponent<WinLose>().SetWinEnable(winner);
@@ -70,12 +64,12 @@ public class MainManager : SingletonMonoBehavior<MainManager> {
 
 	public void GameOver()
 	{
-		SkillMontamaManager.Instance.SkillButtomEnable(false);
-		GameEnder.Instance.GameEnd ();
+		SkillMontamaManager.I.SkillButtomEnable(false);
+		GameEnder.I.GameEnd ();
 		winner = true;
 
 		// 勝利BGM
-		AudioManager.Instance.PlayAudio("bgm_win");
+		AudioManager.I.PlayAudio("bgm_win");
 		GameObject WinLose = Instantiate(WinLosePrefab);
 		WinLose.GetComponent<WinLose>().SetWinEnable(winner);
 	}

@@ -18,17 +18,17 @@ public class TitleManager : MonoBehaviour
 	{
 		if(isInitialUpdate && !Application.isShowingSplashScreen)
 		{
-			AudioManager.Instance.StopAudio();
-			AudioManager.Instance.PlayAudio("bgm_title", AudioManager.PlayMode.Repeat);
+			AudioManager.I.StopAudio();
+			AudioManager.I.PlayAudio("bgm_title", AudioManager.PlayMode.Repeat);
 			isInitialUpdate = false;
 		}
 
 		if (isInitialUpdate) { return; }
 		if (Input.GetKey(KeyCode.Escape)) { Application.Quit(); }
 
-		if (CrossInput.Instance.IsDown())
+		if (CrossInput.I.IsDown())
 		{
-			AudioManager.Instance.PlayAudio("se_titleButton");
+			AudioManager.I.PlayAudio("se_titleButton");
 			FadeManager.Instance.LoadLevel("Home", 0.5f);
 		}
 	}

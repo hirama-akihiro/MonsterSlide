@@ -58,7 +58,7 @@ public class GeneratorManager : SingletonMonoBehavior<GeneratorManager> {
 		for (int x = 1; x <= 7; x++)
 		{
 			GameObject generator = Instantiate(montamaGenerator, new Vector3(x, 1, 0), transform.rotation) as GameObject;
-			generator.GetComponent<MontamaGenerator>().SetMontama(PartyManager.Instance.GetRandomPuzzleMonkuri(), PartyManager.Instance.GetRandomPuzzleMonkuri());
+			generator.GetComponent<MontamaGenerator>().SetMontama(PartyManager.I.GetRandomPuzzleMonkuri(), PartyManager.I.GetRandomPuzzleMonkuri());
 			generators.Add(generator);
 		}
 	}
@@ -75,7 +75,7 @@ public class GeneratorManager : SingletonMonoBehavior<GeneratorManager> {
 			{
 				int index = prevIndex;
 				while (prevIndex == index) { index = Random.Range(0, 7); }
-				generators[index].GetComponent<MontamaGenerator>().SetMontama(PartyManager.Instance.GetRandomPuzzleMonkuri());
+				generators[index].GetComponent<MontamaGenerator>().SetMontama(PartyManager.I.GetRandomPuzzleMonkuri());
 				prevIndex = index;
 			}
 			geneTimeLeft = interval * GetIntervalRatio();

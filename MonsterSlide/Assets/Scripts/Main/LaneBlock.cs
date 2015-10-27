@@ -62,13 +62,13 @@ public class LaneBlock : MonoBehaviour {
 		// 最上段に設置された時，ゲームクリア
 		if (Column == 0 && 1 <= Row && Row <= LaneManager.LANEMAINWIDTH)
 		{
-			MainManager.Instance.IsGameOver = true;
-			GameEnder.Instance.IsGameEnd = true;
+			MainManager.I.IsGameOver = true;
+			GameEnder.I.IsGameEnd = true;
 		}
 
 		// モンタマをセット後，連鎖チェック
-		if (isChainCheck) { LaneManager.Instance.MontamaChainCheck(HoldMontama.GetComponent<PuzzleMontama>().serialID, Row, Column); }
-		LaneManager.Instance.UpdateLaneMatrix();
+		if (isChainCheck) { LaneManager.I.MontamaChainCheck(HoldMontama.GetComponent<PuzzleMontama>().serialID, Row, Column); }
+		LaneManager.I.UpdateLaneMatrix();
 	}
 
 	public void MoveLane(Direction direction)
@@ -121,7 +121,7 @@ public class LaneBlock : MonoBehaviour {
 						{
 							if (HoldMontama != null)
 							{
-								GeneratorManager.Instance.SetMontama(Row - 1, HoldMontama);
+								GeneratorManager.I.SetMontama(Row - 1, HoldMontama);
 								Destroy(HoldMontama);
 								HoldMontama = null;
 							}

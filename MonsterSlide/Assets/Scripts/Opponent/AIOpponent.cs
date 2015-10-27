@@ -19,12 +19,6 @@ public class AIOpponent : BOpponent {
 	private float nowHpUpThreshold;
 
 	/// <summary>
-	/// HP増加量
-	/// </summary>
-	[Range(0.0f, 1.0f)]
-	public float hpIncrement;
-
-	/// <summary>
 	/// ゲーム開始時のHPが減少する確率閾値(0 ~ 1)
 	/// </summary>
 	[Range(0.0f, 1.0f)]
@@ -37,10 +31,10 @@ public class AIOpponent : BOpponent {
 	private float nowHpDownThreshold;
 
 	/// <summary>
-	/// HP減少量
+	/// HP変化量
 	/// </summary>
 	[Range(0.0f, 1.0f)]
-	public float hpDecrease;
+	public float hpVariation;
 
 	/// <summary>
 	/// スキル発動確率閾値
@@ -58,8 +52,8 @@ public class AIOpponent : BOpponent {
 	// Update is called once per frame
 	void Update () {
 		// HP増減チェック
-		if (IsHpUp()) { nowHp += hpIncrement; }
-		else if (IsHpDown()) { nowHp -= hpDecrease; }
+		if (IsHpUp()) { nowHp += hpVariation; }
+		else if (IsHpDown()) { nowHp -= hpVariation; }
 
 		// スキル発動チェック
 	}

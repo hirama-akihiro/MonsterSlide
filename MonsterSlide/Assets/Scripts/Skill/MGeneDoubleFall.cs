@@ -12,13 +12,13 @@ public class MGeneDoubleFall : MSkillBase{
 	void Update () {
 		if(ElapsedTime > skillTime)
 		{
-			GeneratorManager.Instance.Interval = GeneratorManager.Instance.OrgInterval;
+			GeneratorManager.I.Interval = GeneratorManager.I.OrgInterval;
 			Destroy(gameObject);
 		}
 	}
 
 	public override void ActionSkill()
 	{
-		GeneratorManager.Instance.Interval = GeneratorManager.Instance.OrgInterval * 0.5f;
+		GeneratorManager.I.Interval = GeneratorManager.I.OrgInterval * 0.5f;
 	}
 }

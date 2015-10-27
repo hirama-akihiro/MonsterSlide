@@ -64,9 +64,9 @@ public class ServerClientManager : MonoBehaviour {
 	public void OnClickServer()
 	{
 		isServer = true;
-		PartySettingManager.Instance.SetServerParty();
-		BattleTypeManager.Instance.battleType = BattleTypeManager.BattleType.NearBattle_Server;
-		AudioManager.Instance.PlayAudio("se_tap");
+		PartySettingManager.I.SetServerParty();
+		BattleTypeManager.I.battleType = BattleTypeManager.BattleType.NearBattle_Server;
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Matching", 0.5f);
 	}
 
@@ -77,9 +77,9 @@ public class ServerClientManager : MonoBehaviour {
 	public void OnClickClient()
 	{
 		isServer = false;
-		PartySettingManager.Instance.SetClientParty();
-		BattleTypeManager.Instance.battleType = BattleTypeManager.BattleType.NearBattle_Client;
-		AudioManager.Instance.PlayAudio("se_tap");
+		PartySettingManager.I.SetClientParty();
+		BattleTypeManager.I.battleType = BattleTypeManager.BattleType.NearBattle_Client;
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Matching", 0.5f);
 	}
 
@@ -90,10 +90,9 @@ public class ServerClientManager : MonoBehaviour {
 	public void OnClickJumpToMain()
 	{
 		StartManager.SetManagerEnable(false);
-		PartySettingManager.Instance.SetSingleParty();
-		// シーン遷移
-		BattleTypeManager.Instance.battleType = BattleTypeManager.BattleType.SingleBattle;
-		AudioManager.Instance.PlayAudio("se_tap");
+		PartySettingManager.I.SetSingleParty();
+		BattleTypeManager.I.battleType = BattleTypeManager.BattleType.SingleBattle;
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("VS", 0.5f);
 	}
 
@@ -104,8 +103,7 @@ public class ServerClientManager : MonoBehaviour {
 	public void OnClickReturn()
 	{
 		StartManager.SetManagerEnable(false);
-		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("BattleModeSelect", 0.5f);
 	}
 
@@ -116,15 +114,14 @@ public class ServerClientManager : MonoBehaviour {
 	public void OnClickHome()
 	{
 		StartManager.SetManagerEnable(false);
-		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("Home", 0.5f);
 	}
 
 	public void OnClickGame()
 	{
 		StartManager.SetManagerEnable(false);
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("GameModeSelect", 0.5f);
 	}
 
@@ -135,8 +132,7 @@ public class ServerClientManager : MonoBehaviour {
 	public void OnClickPartySelect()
 	{
 		StartManager.SetManagerEnable(false);
-		// シーン遷移
-		AudioManager.Instance.PlayAudio("se_tap");
+		AudioManager.I.PlayAudio("se_tap");
 		FadeManager.Instance.LoadLevel("PartySelect", 0.5f);
 	}
 }
