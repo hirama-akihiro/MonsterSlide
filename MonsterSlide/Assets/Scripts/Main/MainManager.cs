@@ -22,7 +22,7 @@ public class MainManager : SingletonMonoBehavior<MainManager> {
 		AudioManager.I.PlayAudio("bgm_battle", AudioManager.PlayMode.Repeat, 0.5f);
 
 		//  ↓ Author kazuki ito
-		ResultIndicator.setNoRetry (false);
+		ResultManager.SetNoRetry (false);
 		winner = false;
 #if UNITY_ANDROID && !UNITY_EDITOR
 		Bt = GameObject.FindGameObjectWithTag("BlueTooth");

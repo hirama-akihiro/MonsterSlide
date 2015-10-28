@@ -40,7 +40,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 				return;
 			}
 			
-			result.GetComponent<ResultIndicator> ().receiveRetryRequest ();
+			result.GetComponent<ResultManager> ().ReceiveRetryRequest ();
 			retryRequest = false;
 		}
 	}
@@ -200,9 +200,8 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 				GameObject result = GameObject.Find ("ResultManager");
 				if (result == null) {
 					return;
-				}
-				
-				result.GetComponent<ResultIndicator> ().receiveRetryRequest ();
+				}	
+				result.GetComponent<ResultManager> ().ReceiveRetryRequest ();
 				break;
 				
 			case (int)Tag.RetryOK:
@@ -211,7 +210,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 					return;
 				}
 				
-				result2.GetComponent<ResultIndicator> ().GameRetry ();
+				result2.GetComponent<ResultManager> ().GameRetry ();
 				break;
 				
 			case (int)Tag.RetryNO:
@@ -219,7 +218,7 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 				if (result3 == null) {
 					return;
 				}
-				result3.GetComponent<ResultIndicator> ().CancelRetry ();
+				result3.GetComponent<ResultManager> ().CancelRetry ();
 				break;
 			}
 		}
@@ -287,8 +286,6 @@ public class AndroidBlueToothAdapter : MonoBehaviour {
 
 	void onCallDisConnect(string dummydata)
 	{
-		ResultIndicator.setNoRetry (true);
+		ResultManager.SetNoRetry (true);
 	}
-
-
 }

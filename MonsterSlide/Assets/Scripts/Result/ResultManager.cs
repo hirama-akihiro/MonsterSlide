@@ -3,23 +3,42 @@ using System.Collections;
 using UnityEngine.UI;
 
 
-public class ResultIndicator : MonoBehaviour {
+public class ResultManager : MonoBehaviour {
 
 	/// <summary>
-	/// GUISkin
+	/// リトライダイアログ
 	/// </summary>
-	public GUISkin guiSkin;
+	public GameObject retryDialog;
 
-	public GameObject Retry;
+	/// <summary>
+	/// Yesボタン
+	/// </summary>
+	public GameObject yesButton;
 
-	public GameObject YesButton;
+	/// <summary>
+	/// リトライシェード
+	/// </summary>
+	public GameObject retryShade;
 
-	//public GameObject EndButton;
-	public GameObject Darken;
+	/// <summary>
+	/// 再挑戦ダイアログ
+	/// </summary>
+	public GameObject rematchDialog;
 
-	public GameObject RetryDialog;
-
+	/// <summary>
+	/// 待機スプライトオブジェクト
+	/// </summary>
 	public GameObject waitingSprite;
+
+	/// <summary>
+	/// 1P勝利時に表示するオブジェクト
+	/// </summary>
+	public GameObject winObjects;
+
+	/// <summary>
+	/// 1p敗北時に表示するオブジェクト
+	/// </summary>
+	public GameObject loseObjects;
 
 	//  ↓  Author kazuki ito
 	GameObject Bt;
@@ -44,48 +63,53 @@ public class ResultIndicator : MonoBehaviour {
 		// ゲームのBGMを止める
 		AudioManager.I.StopAudio();
 
-		//  ↓  Author kazuki ito
+		if (WinLoseManager.I.battleResult == WinLoseManager.BattleResult.Win)
+		{
+			winObjects.SetActive(true);
+			loseObjects.SetActive(false);
+		}
+		else
+		{
+			winObjects.SetActive(false);
+			loseObjects.SetActive(true);
+		}
 
+		//  ↓  Author kazuki ito
 #if UNITY_ANDROID && !UNITY_EDITOR
 		Bt = GameObject.FindGameObjectWithTag("BlueTooth");
 		BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
 	
 #endif
-
 		//  ↑ Author kabuki ito
-
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		if (CrossInput.I.IsDown () && !request) {
-			Retry.SetActive(true);
-			Darken.SetActive(true);
+			retryDialog.SetActive(true);
+			retryShade.SetActive(true);
 		}
-
 
 		if (oldNoRetry != noRetry){
 			if (!noRetry) {
-				YesButton.SetActive(true);
+				yesButton.SetActive(true);
 			} else {
-				YesButton.SetActive(false);
+				yesButton.SetActive(false);
 			}
 			oldNoRetry = noRetry;
 		}
 
 
 		if (request) {
-			Retry.SetActive(false);
-			//YesButton.SetActive(false);
-			//EndButton.SetActive(false);
+			retryDialog.SetActive(false);
 			waitingSprite.SetActive(true);
 		}
 	}
 
-	public void receiveRetryRequest()
+	public void ReceiveRetryRequest()
 	{
-		RetryDialog.SetActive (true);
+		rematchDialog.SetActive (true);
 	}
 
 	/// <summary>
@@ -106,7 +130,7 @@ public class ResultIndicator : MonoBehaviour {
 	/// Author Kazuki Ito
 	/// </summary>
 	/// <param name="enable">If set to <c>true</c> enable.</param>
-	public static void setNoRetry(bool enable)
+	public static void SetNoRetry(bool enable)
 	{
 		noRetry = enable;
 	}
@@ -125,7 +149,6 @@ public class ResultIndicator : MonoBehaviour {
 			FadeManager.Instance.LoadLevel("Main", 0.5f);
 			retryFlag = true;
 		}
-
 	}
 
 
@@ -162,5 +185,4 @@ public class ResultIndicator : MonoBehaviour {
 		AudioManager.I.PlayAudio("game_maoudamashii_4_field11");
 		FadeManager.Instance.LoadLevel("Home", 0.5f);
 	}
-
 }

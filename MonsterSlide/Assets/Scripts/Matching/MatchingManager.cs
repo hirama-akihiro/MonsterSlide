@@ -65,9 +65,7 @@ public class MatchingManager : MonoBehaviour {
 			clientTextField.GetComponent<Image>().enabled = false;
 			connectButton.SetActive(false);
 			RectTransform rect = addressField.GetComponent<RectTransform>();
-			rect.sizeDelta = new Vector2(1000f, 100f);
 			Vector3 pos = rect.position;
-			rect.position = new Vector3(0f,pos.y,pos.z);
 
 			PlayerPrefs.SetInt("PlayerID",0);
 			PlayerPrefs.SetInt("Rival",1);
@@ -75,7 +73,6 @@ public class MatchingManager : MonoBehaviour {
 			PlayerPrefs.SetInt("SkillMontama1",4);
 			PlayerPrefs.SetInt("SkillMontama2",2);
 			PlayerPrefs.SetInt("SkillMontama3",3);
-
 		}
 		else{
 			spriteMessage.GetComponent<Image>().sprite = clientMessageSprite;
@@ -89,7 +86,6 @@ public class MatchingManager : MonoBehaviour {
 			PlayerPrefs.SetInt("SkillMontama2",4);
 			PlayerPrefs.SetInt("SkillMontama3",2);
 		}
-	
 
 		if (isServer && BtAdapter != null) {
 

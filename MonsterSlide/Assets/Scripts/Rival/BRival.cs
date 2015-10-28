@@ -43,6 +43,7 @@ public class BRival : SingletonMonoBehavior<BRival>, IRival {
 		{
 			MainManager.I.GameOver(true);
 			GameEnder.I.IsGameEnd = true;
+			WinLoseManager.I.battleResult = WinLoseManager.BattleResult.Win;
 			isGameEnd = true;
 		}
 		hpGauge.GetComponent<Image>().fillAmount = nowHP;

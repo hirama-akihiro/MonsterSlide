@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   comboCt: 0
-  comboInterval: 2
+  comboInterval: 3
   comboStrImage: {fileID: 21300000, guid: 803b2f6fd0241014994663018bf6c4bc, type: 3}
   comboNumImages:
   - {fileID: 21300000, guid: b91bea897d67e7d409fa4c745eff3519, type: 3}

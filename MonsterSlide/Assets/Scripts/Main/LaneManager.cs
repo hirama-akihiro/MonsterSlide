@@ -130,6 +130,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 		// ゲーム終了の判定
 		if (nowHP > 1.0f)
 		{
+			WinLoseManager.I.battleResult = WinLoseManager.BattleResult.Lose;
 			MainManager.I.GameOver(false);
 			GameEnder.I.IsGameEnd = true;
 		}
@@ -375,7 +376,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 				if (j < checkHeight)
 				{
 					block.IsLock = false;
-					// レーンがモンタマを保持している場合落として上げる必要があり
+					// レーンがモンタマを保持している場合落として上げる必要がある
 					if (block.HoldMontama != null) { block.ReFallMontama(); }
 					continue;
 				}
