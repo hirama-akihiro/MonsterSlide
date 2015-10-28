@@ -24,11 +24,15 @@ public class SkillMontama : MonoBehaviour {
 	/// </summary>
 	public float nowSkillPt;
 
-	public bool debug = false;
+	/// <summary>
+	/// デバッグモード
+	/// </summary>
+	public bool isDebug = false;
 
-	GameObject cutInManager;
-
-	CutInManager cutInManagerCls;
+	/// <summary>
+	/// 対戦相手が使用しているモンクリか
+	/// </summary>
+	public bool isRival = false;
 	
 	GameObject Bt;
 
@@ -65,8 +69,6 @@ public class SkillMontama : MonoBehaviour {
 		Bt = GameObject.FindGameObjectWithTag("BlueTooth");
 		BtAdapter = Bt.GetComponent<AndroidBlueToothAdapter> ();
 #endif
-		cutInManager = GameObject.Find("CutInManager");
-		cutInManagerCls = cutInManager.GetComponent<CutInManager>();
 	}
 	
 	// Update is called once per frame
@@ -82,20 +84,12 @@ public class SkillMontama : MonoBehaviour {
 				{
 					if (aCollider2D.transform == transform)
 					{
-						if((nowSkillPt >= maxSkillPt) || debug)
+						if((nowSkillPt >= maxSkillPt) || isDebug && !isRival)
 						{
 							GameObject obj = aCollider2D.transform.gameObject;
-							Debug.Log (obj.name);
-							if(BtAdapter != null)
-							{
-								BtAdapter.SendIntergerData(serialId,Tag.Skill);
-							}
-							if (cutInManagerCls.CreateCutIn(serialId, false, false))
-							{
-								nowSkillPt = 0f;
-								gauge.GetComponent<Image>().fillAmount = nowSkillPt;
-								gaugeWaku.GetComponent<Image>().material = null;
-							}
+
+							if (BtAdapter != null) { BtAdapter.SendIntergerData(serialId, Tag.Skill); }
+							if (CutInManager.I.CreateCutIn(serialId, false, false)) { SkillActivate(); }
 						}
 					}
 				}
@@ -108,7 +102,7 @@ public class SkillMontama : MonoBehaviour {
 		nowSkillPt += pt * mag;
 		Instantiate(SkillMontamaManager.I.maxSkillPtEffect, transform.position, transform.rotation);
 
-		if (nowSkillPt >= maxSkillPt)
+		if (IsSkillActivatable)
 		{
 			nowSkillPt = maxSkillPt;
 			gaugeWaku.GetComponent<Image>().material = SkillMontamaManager.I.maxSkillPtMat;
@@ -123,4 +117,19 @@ public class SkillMontama : MonoBehaviour {
 		gaugeWaku.GetComponent<Image>().material = SkillMontamaManager.I.maxSkillPtMat;
 		gauge.GetComponent<Image>().fillAmount = nowSkillPt / maxSkillPt;
 	}
+
+	/// <summary>
+	/// スキル発動時に呼ぶべき後処理メソッド
+	/// </summary>
+	public void SkillActivate()
+	{
+		nowSkillPt = 0f;
+		gauge.GetComponent<Image>().fillAmount = nowSkillPt;
+		gaugeWaku.GetComponent<Image>().material = null;
+	}
+
+	/// <summary>
+	/// スキルが発動かのうか
+	/// </summary>
+	public bool IsSkillActivatable { get { return nowSkillPt >= maxSkillPt; } }
 }

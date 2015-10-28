@@ -16,22 +16,16 @@ public class BRival : SingletonMonoBehavior<BRival>, IRival {
 	/// <summary>
 	/// 現状の対戦相手(ライバル)のHp
 	/// </summary>
-	protected float nowHP = 0.0f;
+	protected float nowHP = 0.4444444f;
 
 	/// <summary>
 	/// ライバルのHPゲージ
 	/// </summary>
 	public GameObject hpGauge;
 
-	/// <summary>
-	/// 対戦相手が使用するモンクリのパーティ
-	/// </summary>
-	public List<GameObject> partyMonkuris = new List<GameObject>();
-
 	protected override void Awake()
 	{
 		base.Awake();
-		nowHP = 0.4444444f;
 	}
 
 	// Use this for initialization

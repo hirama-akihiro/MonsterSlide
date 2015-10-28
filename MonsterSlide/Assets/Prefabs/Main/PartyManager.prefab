@@ -49,6 +49,16 @@ MonoBehaviour:
   - {fileID: 191962, guid: 437b644a0d339934d975cd02fd2361d8, type: 2}
   - {fileID: 163734, guid: eedeb87c689333844991e11662173507, type: 2}
   - {fileID: 191962, guid: 28aeef1089be6a445bde8de9022ada55, type: 2}
+  rivalPuzzleMonkuri:
+  - {fileID: 199446, guid: 4f9e0380f798a26479ce43da8c871cc0, type: 2}
+  - {fileID: 101916, guid: 39da9cfaae59aa040ad27ce8cd485a8a, type: 2}
+  - {fileID: 101916, guid: a47c33b9136909a4a844e9880d5b72bd, type: 2}
+  - {fileID: 193070, guid: 4f119d1cb3ebe1b47b0fafd10fb482d0, type: 2}
+  rivalSkillMonkuri:
+  - {fileID: 193852, guid: 7ab0e4e96d788424e9606eb9116ad8e2, type: 2}
+  - {fileID: 191962, guid: e02541251b1c12d4dbf9ee23497d926b, type: 2}
+  - {fileID: 163734, guid: eedeb87c689333844991e11662173507, type: 2}
+  - {fileID: 163734, guid: f9a1e603ad0da2f49a6c0c28ea405cec, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

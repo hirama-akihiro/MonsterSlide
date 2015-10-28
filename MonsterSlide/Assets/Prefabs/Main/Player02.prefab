@@ -101,8 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpGauge: {fileID: 0}
   partyMonkuris: []
-  beginHpUpThreshold: .995000005
-  beginHpDownThreshold: .00999999978
+  beginHpUpThreshold: .899999976
+  beginHpDownThreshold: .100000001
   hpVariation: .111111
   skillTriggerThreshold: .0500000007
 --- !u!114 &11465028
@@ -116,9 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcf53159ba52894dbc4ba0f7cc76d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1_woman01: {fileID: 21300000, guid: 1a49a7a9713dfc844bf1b7ef69a7e9f1, type: 3}
-  p1_woman02: {fileID: 21300000, guid: 88f2ce82f1372b44aa20dcc7b4acf981, type: 3}
-  p1_woman03: {fileID: 21300000, guid: 7df3092bcb6aee1479dc24e2465f8b15, type: 3}
+  p1_woman01: {fileID: 21300000, guid: 607c8025052d5b94eb7104e6bf3f274a, type: 3}
+  p1_woman02: {fileID: 21300000, guid: 096fb11faa493464aba5dec71f07aebd, type: 3}
+  p1_woman03: {fileID: 21300000, guid: 6c0a2223f77b68f44aa75b08326a7c62, type: 3}
   isPlayer1: 0
 --- !u!212 &21233374
 SpriteRenderer:
@@ -170,7 +170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 50778795
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1a49a7a9713dfc844bf1b7ef69a7e9f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 607c8025052d5b94eb7104e6bf3f274a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21248544
 SpriteRenderer:

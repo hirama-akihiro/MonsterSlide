@@ -4,19 +4,29 @@ using System.Collections;
 public class PartyManager : SingletonMonoBehavior<PartyManager>
 {
 	/// <summary>
-	/// パーティサイズ(モンタマ構成:4)
+	/// パーティサイズ(モンクリ構成:4)
 	/// </summary>
 	public readonly static int MAXPARTYCOUNT = 4;
 
 	/// <summary>
-	/// パーティパズルモンタマ配列
+	/// パーティパズルモンクリ配列
 	/// </summary>
 	public GameObject[] partyPuzzleMontama = new GameObject[MAXPARTYCOUNT];
 
 	/// <summary>
-	/// パーティスキルモンタマ
+	/// パーティスキルモンクリ配列
 	/// </summary>
 	public GameObject[] partySkillMontama = new GameObject[MAXPARTYCOUNT];
+
+	/// <summary>
+	/// 対戦相手のパーティパズルモンクリ配列
+	/// </summary>
+	public GameObject[] rivalPuzzleMonkuri = new GameObject[MAXPARTYCOUNT];
+
+	/// <summary>
+	/// 対戦相手のスキルモンクリ配列
+	/// </summary>
+	public GameObject[] rivalSkillMonkuri = new GameObject[MAXPARTYCOUNT];
 
 	// Use this for initialization
 	void Start()
@@ -56,6 +66,37 @@ public class PartyManager : SingletonMonoBehavior<PartyManager>
 	/// <param name="index"></param>
 	/// <param name="monkuri"></param>
 	public void SetSkillMontama(int index, GameObject monkuri) { partySkillMontama[index] = monkuri; }
+
+	/// <summary>
+	/// パーティモンタマ取得(0から始まる番号指定)
+	/// </summary>
+	/// <returns></returns>
+	public GameObject GetRivalPuzzleMontama(int index) { return rivalPuzzleMonkuri[index]; }
+
+	/// <summary>
+	/// パーティモンタマに設定
+	/// </summary>
+	/// <param name="index"></param>
+	/// <param name="monkuri"></param>
+	public void SetRivalPuzzleMontama(int index, GameObject monkuri) { rivalPuzzleMonkuri[index] = monkuri; }
+
+	/// <summary>
+	/// パーティモンタマ取得(0から始まる番号指定)
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
+	public GameObject GetRivalSkillMonkuri(int index) { return rivalSkillMonkuri[index]; }
+
+	/// <summary>
+	/// パーティモンタマに設定
+	/// </summary>
+	/// <param name="index"></param>
+	/// <param name="monkuri"></param>
+	public void SetRivalSkillMontama(int index, GameObject monkuri)
+	{
+		monkuri.GetComponent<SkillMontama>().isRival = true;
+		rivalSkillMonkuri[index] = monkuri;
+	}
 
 	/// <summary>
 	/// パーティ内のモンタマをランダムで取得

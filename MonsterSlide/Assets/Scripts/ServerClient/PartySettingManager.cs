@@ -20,6 +20,7 @@ public class PartySettingManager : SingletonMonoBehavior<PartySettingManager>
 
 	public void SetServerParty()
 	{
+		// プレイヤーのパーティ選択
 		PartyManager.I.SetPuzzleMontama(0, allPuzzleMontamas[1]);
 		PartyManager.I.SetSkillMontama(0, allSkillMontamas[1]);
 		PartyManager.I.SetPuzzleMontama(1, allPuzzleMontamas[4]);
@@ -42,5 +43,19 @@ public class PartySettingManager : SingletonMonoBehavior<PartySettingManager>
 		PartyManager.I.SetSkillMontama(3, allSkillMontamas[2]);
 	}
 
-	public void SetSingleParty() { SetServerParty(); }
+	public void SetSingleParty()
+	{
+		SetServerParty();
+
+		// 対戦相手のパーティ選択
+		if (BattleTypeManager.I.battleType != BattleTypeManager.BattleType.SingleBattle) { return; }
+		PartyManager.I.SetRivalPuzzleMontama(0, allPuzzleMontamas[0]);
+		PartyManager.I.SetRivalSkillMontama(0, allSkillMontamas[0]);
+		PartyManager.I.SetRivalPuzzleMontama(1, allPuzzleMontamas[5]);
+		PartyManager.I.SetRivalSkillMontama(1, allSkillMontamas[5]);
+		PartyManager.I.SetRivalPuzzleMontama(2, allPuzzleMontamas[2]);
+		PartyManager.I.SetRivalSkillMontama(2, allSkillMontamas[2]);
+		PartyManager.I.SetRivalPuzzleMontama(3, allPuzzleMontamas[1]);
+		PartyManager.I.SetRivalSkillMontama(3, allSkillMontamas[1]);
+	}
 }

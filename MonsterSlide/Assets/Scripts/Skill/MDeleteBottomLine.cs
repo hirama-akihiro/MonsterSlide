@@ -37,7 +37,6 @@ public class MDeleteBottomLine : MSkillBase {
 			SkillMontamaManager.I.AddSkillPt(puzzleMontama.GetComponent<PuzzleMontama>().serialID, 1.0f);
 			PlayerSkillBar.I.AddSkillPt(1);
 
-			//puzzleMontama.GetComponent<PuzzleMontama>().DestroyMonkuri();
 			Destroy(puzzleMontama);
 			LaneManager.I.LaneMatrix[LaneManager.LANEMAINHEIGHT, i].GetComponent<LaneBlock>().HoldMontama = null;
 		}

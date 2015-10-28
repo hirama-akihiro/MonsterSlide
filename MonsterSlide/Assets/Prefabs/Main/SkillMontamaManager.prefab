@@ -39,17 +39,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c893aa64f79f0414088f2166de472a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillMontamas:
-  - {fileID: 163734, guid: f9a1e603ad0da2f49a6c0c28ea405cec, type: 2}
-  - {fileID: 191962, guid: 437b644a0d339934d975cd02fd2361d8, type: 2}
-  - {fileID: 163734, guid: eedeb87c689333844991e11662173507, type: 2}
-  - {fileID: 191962, guid: 28aeef1089be6a445bde8de9022ada55, type: 2}
-  SkillGauge:
+  skillGauge:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   skillGaugeWaku:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rivalSkillGauge:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rivalSkillGaugeWaku:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
