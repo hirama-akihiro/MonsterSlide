@@ -10,6 +10,8 @@ public class CutInSelecter : MonoBehaviour {
 	public Sprite serverPlayer2Sprite;
 	public Sprite clientPlayer1Sprite;
 	public Sprite clientPlayer2Sprite;
+	public Sprite singlePlayer1Sprite;
+	public Sprite singlePlayer2Sprite;
 
 	// Use this for initialization
 	void Awake() {
@@ -24,8 +26,8 @@ public class CutInSelecter : MonoBehaviour {
 				cutInPlayer2.GetComponent<SpriteRenderer>().sprite = clientPlayer2Sprite;
 				break;
 			case BattleTypeManager.BattleType.SingleBattle:
-				cutInPlayer1.GetComponent<SpriteRenderer>().sprite = serverPlayer1Sprite;
-				cutInPlayer2.GetComponent<SpriteRenderer>().sprite = serverPlayer2Sprite;
+				cutInPlayer1.GetComponent<SpriteRenderer>().sprite = singlePlayer1Sprite;
+				cutInPlayer2.GetComponent<SpriteRenderer>().sprite = singlePlayer2Sprite;
 				break;
 		}
 	}
