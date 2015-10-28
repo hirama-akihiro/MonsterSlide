@@ -22,11 +22,10 @@ public class MAddSkillPt : MSkillBase {
 
 	public override void ActionSkill()
 	{
-		GameObject[] montamas = GameObject.FindGameObjectsWithTag("SkillMontama");
-		foreach (GameObject montama in montamas)
+		foreach (GameObject monkuri in SkillMontamaManager.I.SkillMonkuris)
 		{
-			Instantiate(healEffectObj, montama.transform.position, montama.transform.rotation);
-			montama.GetComponent<SkillMontama>().addSkillPt(addSkillPt);
+			Instantiate(healEffectObj, monkuri.transform.position, monkuri.transform.rotation);
+			monkuri.GetComponent<SkillMontama>().addSkillPt(addSkillPt);
 		}
 	}
 }

@@ -61,11 +61,7 @@ public class DrawLaneBlockManager : SingletonMonoBehavior<DrawLaneBlockManager> 
 	{
 		if (LaneManager.I.MoveRow <= 0 || LaneManager.LANEMAINWIDTH < LaneManager.I.MoveRow) { return; }
 		if (LaneManager.I.MoveColumn <= 0 || LaneManager.LANEMAINHEIGHT < LaneManager.I.MoveColumn) { return; }
-		for (int i = 0; i < LaneManager.LANEMAINHEIGHT; i++)
-		{
-			drawLaneMatrix[i, LaneManager.I.MoveRow - 1].GetComponent<SpriteRenderer>().sprite = touchLaneSprite;
-		}
-		for(int i = 0; i < LaneManager.LANEMAINWIDTH;i++)
+		for (int i = 0; i < LaneManager.LANEMAINWIDTH; i++)
 		{
 			drawLaneMatrix[LaneManager.I.MoveColumn - 1, i].GetComponent<SpriteRenderer>().sprite = touchLaneSprite;
 		}

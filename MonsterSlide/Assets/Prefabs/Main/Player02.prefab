@@ -100,9 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpGauge: {fileID: 0}
-  partyMonkuris: []
-  beginHpUpThreshold: .899999976
-  beginHpDownThreshold: .100000001
+  beginHpUpThreshold: .699999988
+  beginHpDownThreshold: .400000006
   hpVariation: .111111
   skillTriggerThreshold: .0500000007
 --- !u!114 &11465028

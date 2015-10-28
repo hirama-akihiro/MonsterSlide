@@ -4,17 +4,23 @@ using System.Collections;
 public class PuzzleMontama : MonoBehaviour {
 	public int aryIndex = -1;
 	/// <summary>
-	/// 1 ～ 4のモンタマ判定番号
+	/// 0から始まるモンクリ固有のID
 	/// </summary>
 	public int serialID;
 
 	/// <summary>
 	/// 親レーンオブジェクト
 	/// </summary>
-	public GameObject ParentLane;
+	public GameObject parentLane;
 
+	/// <summary>
+	/// アタッチされているRenderer
+	/// </summary>
 	private SpriteRenderer myRenderer;
 
+	/// <summary>
+	/// 消滅時のパーティクル
+	/// </summary>
 	public GameObject particle;
 
 	//  ↓  Author kazuki ito
@@ -38,13 +44,12 @@ public class PuzzleMontama : MonoBehaviour {
 		if (IsGameOver) {return;}
 
 		// レーンに設置されている時レーンの座標に固定
-		if (ParentLane != null) { transform.position = ParentLane.transform.position; }
+		if (parentLane != null) { transform.position = parentLane.transform.position; }
 
 		// 止まらない限りfallSpeedで落下する
 		if (!IsStop) { transform.Translate(0, -FallSpeedManager.I.GetFallSpeedMagnification() * Time.deltaTime, 0); }
 
 		// 目標ポイントと一定以上近いなら
-		//if (Vector3.Distance(transform.position, TargetPos) < 0.1)
 		if(transform.position.y < TargetPos.y + 0.1f)
 		{
 			if (LaneManager.I.IsLockLane(transform.position) && !IsStop)
@@ -55,12 +60,10 @@ public class PuzzleMontama : MonoBehaviour {
 					transform.parent = laneBlock.transform;
 					transform.position = TargetPos;
 					laneBlock.GetComponent<LaneBlock>().SetHold(gameObject, true);
+					LaneManager.I.ReSetColumnMonkuris(Mathf.RoundToInt(transform.position.x), false);
 				}
 			}
-			else
-			{
-				TargetPos += new Vector3(0, -1, 0); /* 一段目標を下げる */
-			}
+			else { TargetPos += new Vector3(0, -1, 0); /* 一段目標を下げる */}
 		}
 
 		// 連続して落ちた時上手く行くように下のブロックに設置されていたら行こうえで止まる
@@ -76,7 +79,7 @@ public class PuzzleMontama : MonoBehaviour {
 		}
 
 		// 親レーンがモンタマを保持していない時落ちる
-		if (ParentLane != null && ParentLane.GetComponent<LaneBlock>().HoldMontama == null) { ReFallMontama(); }
+		if (parentLane != null && parentLane.GetComponent<LaneBlock>().HoldMontama == null) { ReFallMontama(); }
 	}
 
 	/// <summary>
@@ -84,11 +87,11 @@ public class PuzzleMontama : MonoBehaviour {
 	/// </summary>
 	public void ReFallMontama()
 	{
-		transform.position = ParentLane.transform.position;
-		TargetPos = ParentLane.transform.position + new Vector3(0, -1, 0);
-		ParentLane = null;
+		transform.position = parentLane.transform.position;
+		TargetPos = parentLane.transform.position + new Vector3(0, -1, 0);
+		parentLane = null;
 		transform.parent = null;
-		ParentLane = null;
+		parentLane = null;
 	}
 
 	
@@ -120,7 +123,7 @@ public class PuzzleMontama : MonoBehaviour {
 	/// <summary>
 	/// パズルモンタマが止まっているか
 	/// </summary>
-	public bool IsStop { get { return ParentLane != null; } }
+	public bool IsStop { get { return parentLane != null; } }
 
 	/// <summary>
 	/// まだ落下していないか

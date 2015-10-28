@@ -215,13 +215,14 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	/// </summary>
 	private void EventInputIsUp()
 	{
+		// 下フリック動作への対応
 		if(!isSlideMoveLane)
 		{
 			lastDirection = CrossInput.I.GetFrickDirection();
 			if (lastDirection == Direction.DOWN)
 			{
 				AudioManager.I.PlayAudio("se_frick");
-				RapidFallMontama();
+				ReSetColumnMonkuris(moveRow, true);
 			}
 		}
 		DrawLaneBlockManager.I.DrawClear();
@@ -242,7 +243,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			{
 				tmpLaneBlock.HoldMontama = Instantiate(setLaneBlock.HoldMontama, tmpLaneBlock.transform.position, tmpLaneBlock.transform.rotation) as GameObject;
 				tmpLaneBlock.HoldMontama.transform.parent = setLaneBlock.transform;
-				tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>().ParentLane = tmpLaneBlock.gameObject;
+				tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>().parentLane = tmpLaneBlock.gameObject;
 				PuzzleMontamaManager.I.PuzzleMontamas.Add(tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>());
 			}
 
@@ -253,7 +254,7 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 			{
 				tmpLaneBlock.HoldMontama = Instantiate(setLaneBlock.HoldMontama, tmpLaneBlock.transform.position, tmpLaneBlock.transform.rotation) as GameObject;
 				tmpLaneBlock.HoldMontama.transform.parent = setLaneBlock.transform;
-				tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>().ParentLane = tmpLaneBlock.gameObject;
+				tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>().parentLane = tmpLaneBlock.gameObject;
 				PuzzleMontamaManager.I.PuzzleMontamas.Add(tmpLaneBlock.HoldMontama.GetComponent<PuzzleMontama>());
 				PuzzleMontamaManager.I.DeleteNullObject();
 			}
@@ -261,54 +262,34 @@ public class LaneManager : SingletonMonoBehavior<LaneManager> {
 	}
 
 	/// <summary>
-	/// 下動作が行われた時に一瞬で落下させるメソッド(フリックしたレーンのだけ)
+	/// モンクリがセットされる列を重ならないように再配置する
 	/// </summary>
-	private void RapidFallMontama()
+	public void ReSetColumnMonkuris(float x, bool isRapid)
 	{
-		SortedDictionary<float, PuzzleMontama> rapidTargetMontama = new SortedDictionary<float, PuzzleMontama>();
-		var puzzleMontamas = PuzzleMontamaManager.I.PuzzleMontamas;
-		foreach (var montama in puzzleMontamas)
+		SortedDictionary<float, PuzzleMontama> targetMonkuris = new SortedDictionary<float, PuzzleMontama>();
+		foreach (var monkuri in PuzzleMontamaManager.I.PuzzleMontamas)
 		{
-			if (montama == null) { continue; }
-			if (Mathf.RoundToInt(montama.transform.position.x) == moveRow)
+			if (monkuri == null) { continue; }
+			if (monkuri.parentLane == null && !isRapid) { return; }
+			if (Mathf.RoundToInt(monkuri.transform.position.x) == x)
 			{
-				rapidTargetMontama.Add(montama.transform.position.y, montama);
+				if (targetMonkuris.ContainsKey(monkuri.transform.position.y))
+					targetMonkuris.Add(monkuri.transform.position.y + targetMonkuris.Keys.Count * 0.1f, monkuri);
+				else
+					targetMonkuris.Add(monkuri.transform.position.y, monkuri);
 			}
 		}
 		// 高さが低いものからレーンにはめていく
 		float offset = 0.0f;
-		foreach (var montama in rapidTargetMontama.Values)
+		foreach (var montama in targetMonkuris.Values)
 		{
-			GameObject lane = GetTouchPosLaneObject(new Vector3(moveRow, -LANEMAINHEIGHT + offset));
+			GameObject lane = GetTouchPosLaneObject(new Vector3(x, -LANEMAINHEIGHT + offset));
 			lane.GetComponent<LaneBlock>().SetHold(montama.gameObject, false);
 			offset++;
 		}
 
-		foreach (var montama in rapidTargetMontama.Values)
-		{
-			MontamaChainCheck(montama.serialID, montama.ParentLane.GetComponent<LaneBlock>().Row, montama.ParentLane.GetComponent<LaneBlock>().Column);
-		}
-	}
-
-	/// <summary>
-	/// 移動可能なレーンブロック取得
-	/// </summary>
-	/// <param name="column"></param>
-	/// <param name="row"></param>
-	/// <returns></returns>
-	public List<GameObject> GetMoveLaneBlocks(int column, int row)
-	{
-		List<GameObject> result = new List<GameObject>();
-		for (int i = 0; i < LANEFRAMEHEIGHT; i++)
-		{
-			result.Add(laneMatrix[i, row]);
-		}
-		for (int i = 0; i < LANEFRAMEWIDTH; i++)
-		{
-			if (i == row) { continue; }
-			result.Add(laneMatrix[column, i]);
-		}
-		return result;
+		foreach (var montama in targetMonkuris.Values)
+			MontamaChainCheck(montama.serialID, montama.parentLane.GetComponent<LaneBlock>().Row, montama.parentLane.GetComponent<LaneBlock>().Column);
 	}
 
 	/// <summary>

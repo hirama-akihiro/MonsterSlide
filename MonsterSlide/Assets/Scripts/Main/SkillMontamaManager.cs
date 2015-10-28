@@ -162,6 +162,9 @@ public class SkillMontamaManager : SingletonMonoBehavior<SkillMontamaManager> {
 	/// </summary>
 	public GameObject[] SkillMonkuris { get { return skillMonkuris; } }
 
+	/// <summary>
+	/// 対戦相手のスキルオブジェクト配列
+	/// </summary>
 	public GameObject[] RivalSkillMonkuris { get { return rivalSkillMonkuris; } }
 
 	/// <summary>

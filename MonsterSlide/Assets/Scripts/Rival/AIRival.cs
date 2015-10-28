@@ -10,7 +10,7 @@ public class AIRival : BRival {
 	/// ゲーム開始時のHPが増加する確率閾値(0 ~ 1)
 	/// </summary>
 	[Range(0.0f, 1.0f)]
-	public float beginHpUpThreshold = 0.8f;
+	public float beginHpUpThreshold = 0.7f;
 
 	/// <summary>
 	/// 現状のHPが増加する確率閾値(0 ~ 1)
@@ -22,7 +22,7 @@ public class AIRival : BRival {
 	/// ゲーム開始時のHPが減少する確率閾値(0 ~ 1)
 	/// </summary>
 	[Range(0.0f, 1.0f)]
-	public float beginHpDownThreshold = 0.1f;
+	public float beginHpDownThreshold = 0.2f;
 
 	/// <summary>
 	/// 現状のHPが減少する確率閾値(0 ~ 1)
@@ -53,6 +53,7 @@ public class AIRival : BRival {
 	// Update is called once per frame
 	protected override void Update()
 	{
+		if(BattleTypeManager.I.battleType != BattleTypeManager.BattleType.SingleBattle) { return; }
 		base.Update();
 	}
 
@@ -61,14 +62,14 @@ public class AIRival : BRival {
 		while (true)
 		{
 			// HP増減チェック(減少時にスキルポイントUp)
+			yield return new WaitForSeconds(2.0f);
 			float check = Random.Range(0.0f, 1.0f);
 			if (IsHpUp(check)) { nowHP += hpVariation; }
 			else if (IsHpDown(check))
 			{
 				nowHP -= hpVariation;
-				SkillMontamaManager.I.AddRandomRivalSkillPt(5);
+				if (nowHP > 0.2) { SkillMontamaManager.I.AddRandomRivalSkillPt(5); }
 			}
-			yield return new WaitForSeconds(1.0f);
 
 			// スキル発動チェック
 			int index = Random.Range(0, 4);
@@ -77,7 +78,6 @@ public class AIRival : BRival {
 			{
 				if (CutInManager.I.CreateCutIn(skillMonkuri.serialId, true, false)) { skillMonkuri.SkillActivate(); }
 			}
-			yield return new WaitForSeconds(1.0f);
 		}
 	}
 
