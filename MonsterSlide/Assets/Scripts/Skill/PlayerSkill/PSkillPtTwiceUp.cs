@@ -36,8 +36,7 @@ public class PSkillPtTwiceUp : PSkillBase {
 
 	public override void ActionSkill()
 	{
-		GameObject[] montamas = GameObject.FindGameObjectsWithTag("SkillMontama");
-		foreach (GameObject montama in montamas)
+		foreach (GameObject montama in SkillMontamaManager.I.SkillMonkuris)
 		{
 			montama.GetComponent<SkillMontama>().mag = mag;
 			GameObject effect = Instantiate(twiceEffect, montama.transform.position, montama.transform.rotation) as GameObject;
