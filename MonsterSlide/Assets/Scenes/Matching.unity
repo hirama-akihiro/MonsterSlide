@@ -532,8 +532,8 @@ MonoBehaviour:
   clientMessageSprite: {fileID: 21300000, guid: c06869b391eeeaa4d9864892147fc729,
     type: 3}
   spriteLabel: {fileID: 1141018628}
-  serverLabel: {fileID: 21300000, guid: d049d7e62c1f66f4d915e9aa33beebb3, type: 3}
-  clientLabel: {fileID: 21300000, guid: 38d0f2000ae5e8646936271a69eba500, type: 3}
+  serverLabel: {fileID: 21300000, guid: 6470c08e229e44f48b838b85d316e515, type: 3}
+  clientLabel: {fileID: 21300000, guid: 51b41cc456de31b43b664e9d5c27bf40, type: 3}
   serverTextField: {fileID: 1401171130}
   clientTextField: {fileID: 1119396166}
 --- !u!1 &880427764
@@ -852,7 +852,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d049d7e62c1f66f4d915e9aa33beebb3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6470c08e229e44f48b838b85d316e515, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -65,10 +65,10 @@ public class AIRival : BRival {
 			yield return new WaitForSeconds(2.0f);
 			float check = Random.Range(0.0f, 1.0f);
 			if (IsHpUp(check)) { nowHP += hpVariation; }
-			else if (IsHpDown(check))
+			else if (IsHpDown(check) && nowHP > 0.2)
 			{
 				nowHP -= hpVariation;
-				if (nowHP > 0.2) { SkillMontamaManager.I.AddRandomRivalSkillPt(5); }
+				SkillMontamaManager.I.AddRandomRivalSkillPt(5); 
 			}
 
 			// スキル発動チェック
